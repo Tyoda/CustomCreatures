@@ -1,0 +1,2735 @@
+
+
+The values for createCreatureTemplate are:
+createCreatureTemplate(int id, String name, String plural, String longDesc, String modelName, int[] types, byte bodyType, Skills skills, short vision, byte sex, short centimetersHigh, short centimetersLong, short centimetersWide, String deathSndMale, String deathSndFemale, String hitSndMale, String hitSndFemale, float naturalArmour, float handDam, float kickDam, float biteDam, float headDam, float breathDam, float speed, int moveRate, int[] itemsButchered, int maxHuntDist, int aggress, byte meatMaterial)
+
+
+
+And now all the creature templates. You can search with CTRL+F for "bear" for example to see what values that uses.
+
+private static void createHellScorpionTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 2.0F);
+    skills.learnTemp(101, 5.0F);
+    skills.learnTemp(105, 70.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 44.0F);
+    int[] types = new int[]{7, 6, 13, 16, 29, 32, 34, 39, 46, 55, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.multiped.scorpion.hell", types, (byte)8, skills, (short)5, (byte)0, (short)130, (short)30, (short)20, "sound.death.insect", "sound.death.insect", "sound.combat.hit.insect", "sound.combat.hit.insect", 0.3F, 8.0F, 14.0F, 13.0F, 0.0F, 0.0F, 0.75F, 1700, new int[]{439}, 7, 64, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setBreathDamString("sting");
+    temp.setAlignment(-40.0F);
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(18.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(5);
+    temp.setColorBlue(255);
+    temp.setColorGreen(255);
+    temp.setColorRed(255);
+    temp.setOnFire(false);
+    temp.setGlowing(false);
+    temp.setMaxPercentOfCreatures(0.02F);
+}
+
+private static void createHellHoundTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 25.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 12.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 6, 13, 3, 29, 36, 39, 32, 46, 55, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.dog.hell", types, (byte)3, skills, (short)7, (byte)0, (short)40, (short)20, (short)100, "sound.death.dog", "sound.death.dog", "sound.combat.hit.dog", "sound.combat.hit.dog", 0.6F, 10.0F, 0.0F, 12.0F, 0.0F, 0.0F, 1.2F, 300, new int[]{204}, 10, 94, (byte)74);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-60.0F);
+    temp.setMaxAge(35);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(4);
+    temp.setColorBlue(255);
+    temp.setColorGreen(255);
+    temp.setColorRed(255);
+    temp.setOnFire(false);
+    temp.setGlowing(true);
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createWorgTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 12.0F);
+    skills.learnTemp(10052, 50.0F);
+    int[] types = new int[]{7, 6, 13, 3, 29, 36, 39};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.wolf.worg", types, (byte)3, skills, (short)7, (byte)0, (short)40, (short)20, (short)100, "sound.death.dog", "sound.death.dog", "sound.combat.hit.dog", "sound.combat.hit.dog", 0.2F, 10.0F, 0.0F, 12.0F, 0.0F, 0.0F, 1.2F, 300, new int[0], 10, 94, (byte)87);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-60.0F);
+    temp.setMaxAge(4);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(4);
+}
+
+private static void createHellHorseTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 35.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 7.0F);
+    skills.learnTemp(105, 72.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 38.0F);
+    int[] types = new int[]{7, 41, 3, 14, 9, 27, 32, 6, 39, 55};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.horse.hell", types, (byte)1, skills, (short)3, (byte)0, (short)180, (short)50, (short)250, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 1.0F, 5.0F, 7.0F, 10.0F, 0.0F, 0.0F, 1.8F, 100, new int[]{307, 306, 140, 71, 309, 308, 308}, 5, 0, (byte)79);
+    temp.setMaxAge(200);
+    temp.setBaseCombatRating(9.0F);
+    temp.combatDamageType = 4;
+    temp.setCombatMoves(new int[]{10});
+    temp.setAlignment(-40.0F);
+    temp.setHandDamString("kick");
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setMaxGroupAttackSize(4);
+    temp.setColorBlue(255);
+    temp.setColorGreen(255);
+    temp.setColorRed(255);
+    temp.setOnFire(false);
+    temp.setGlowing(true);
+    temp.setMaxPercentOfCreatures(0.03F);
+    temp.setChildTemplateId(117);
+    temp.isHorse = true;
+    temp.setColourNames(new String[]{"ash", "cinder", "envious", "shadow", "pestilential", "nightshade", "incandescent", "molten"});
+}
+
+private static void createHellFoalTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 10.0F);
+    skills.learnTemp(103, 15.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 3.0F);
+    skills.learnTemp(105, 35.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 15.0F);
+    int[] types = new int[]{7, 3, 14, 9, 27, 32, 6, 39, 55, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.horse.hell.foal", types, (byte)1, skills, (short)3, (byte)0, (short)100, (short)50, (short)75, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 1.0F, 3.0F, 4.0F, 4.0F, 0.0F, 0.0F, 1.2F, 100, new int[]{307, 306, 140, 71, 309, 308, 308}, 5, 0, (byte)79);
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(5.0F);
+    temp.combatDamageType = 4;
+    temp.setAlignment(-40.0F);
+    temp.setHandDamString("kick");
+    temp.setAdultFemaleTemplateId(83);
+    temp.setAdultMaleTemplateId(83);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setMaxGroupAttackSize(2);
+    temp.setColorBlue(255);
+    temp.setColorGreen(255);
+    temp.setColorRed(255);
+    temp.setOnFire(false);
+    temp.setGlowing(true);
+    temp.setMaxPercentOfCreatures(0.015F);
+    temp.isHorse = true;
+    temp.setCorpseName("hellhorse.foal.");
+    temp.setColourNames(new String[]{"ash", "cinder", "envious", "shadow", "pestilential", "nightshade", "incandescent", "molten"});
+}
+
+private static void createIncarnationLibilaTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 44.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 49.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{8, 13, 16, 27, 36, 12, 62, 24, 25, 40, 45, 47};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.giant.incarnation", types, (byte)0, skills, (short)20, (byte)1, (short)570, (short)100, (short)60, "sound.death.libila.incarnation", "sound.death.libila.incarnation", "sound.combat.hit.libila.incarnation", "sound.combat.hit.libila.incarnation", 0.03F, 7.0F, 30.0F, 30.0F, 40.0F, 0.0F, 1.5F, 10, new int[]{683, 683, 308, 308}, 10, 5, (byte)87);
+    temp.setAlignment(-100.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(86.0F);
+    temp.setMaxGroupAttackSize(30);
+    temp.combatDamageType = 1;
+    temp.setCombatMoves(new int[]{7, 2, 1});
+    temp.hasHands = true;
+}
+
+private static void createManifestationFoTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 70.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 50.0F);
+    skills.learnTemp(106, 59.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{8, 13, 16, 27, 36, 12, 24, 40, 45, 47, 62};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.giant.manifestation", types, (byte)0, skills, (short)20, (byte)0, (short)570, (short)100, (short)60, "sound.death.fo.manifestation", "sound.death.fo.manifestation", "sound.combat.hit.fo.manifestation", "sound.combat.hit.fo.manifestation", 0.03F, 10.0F, 30.0F, 30.0F, 40.0F, 0.0F, 1.5F, 10, new int[]{683, 683, 308, 308}, 10, 5, (byte)87);
+    temp.setAlignment(100.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(86.0F);
+    temp.setMaxGroupAttackSize(30);
+    temp.combatDamageType = 0;
+    temp.setCombatMoves(new int[]{8, 1});
+    temp.hasHands = true;
+}
+
+private static void createMagranonJuggernautTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 90.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 90.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 19.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{8, 13, 16, 27, 36, 12, 24, 40, 45, 47, 62};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.giant.juggernaut", types, (byte)0, skills, (short)20, (byte)0, (short)570, (short)100, (short)60, "sound.death.magranon.juggernaut", "sound.death.magranon.juggernaut", "sound.combat.hit.magranon.juggernaut", "sound.combat.hit.magranon.juggernaut", 0.03F, 10.0F, 30.0F, 30.0F, 40.0F, 0.0F, 1.5F, 10, new int[]{683, 683, 308, 308}, 10, 5, (byte)87);
+    temp.setAlignment(100.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(96.0F);
+    temp.setMaxGroupAttackSize(30);
+    temp.combatDamageType = 0;
+    temp.setCombatMoves(new int[]{8, 5, 1});
+    temp.hasHands = true;
+}
+
+private static void createEpiphanyVynoraTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 50.0F);
+    skills.learnTemp(104, 65.0F);
+    skills.learnTemp(103, 80.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 80.0F);
+    skills.learnTemp(106, 39.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{8, 24, 13, 16, 27, 62, 36, 12, 40, 45, 47};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.giant.epiphany", types, (byte)0, skills, (short)20, (byte)0, (short)570, (short)100, (short)60, "sound.death.vynora.epiphany", "sound.death.vynora.epiphany", "sound.combat.hit.vynora.epiphany", "sound.combat.hit.vynora.epiphany", 0.03F, 10.0F, 24.0F, 26.0F, 0.0F, 0.0F, 1.5F, 10, new int[]{683, 683, 308, 308}, 10, 5, (byte)87);
+    temp.setAlignment(100.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(96.0F);
+    temp.setMaxGroupAttackSize(30);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{7, 5});
+    temp.hasHands = true;
+    temp.setPaintMode(1);
+    temp.setGlowing(true);
+}
+
+private static void createEagleSpiritTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 20.0F);
+    skills.learnTemp(105, 50.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 45.0F);
+    int[] types = new int[]{41, 8, 13, 16, 29, 12, 24, 40, 22, 46, 50};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.eagle.spirit", types, (byte)6, skills, (short)30, (byte)1, (short)150, (short)90, (short)320, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.1F, 7.0F, 10.0F, 13.0F, 17.0F, 0.0F, 1.9F, 500, new int[]{683, 303, 308, 308, 310}, 20, 49, (byte)77);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(0.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(77);
+    temp.setBaseCombatRating(15.0F);
+    temp.setMaxGroupAttackSize(6);
+    temp.combatDamageType = 1;
+    temp.setCombatMoves(new int[]{1});
+}
+
+private static void createDrakeSpiritTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 65.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 34.0F);
+    skills.learnTemp(101, 40.0F);
+    skills.learnTemp(105, 80.0F);
+    skills.learnTemp(106, 39.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{41, 8, 13, 16, 29, 12, 40, 22, 24, 46, 50};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.spirit", types, (byte)6, skills, (short)30, (byte)1, (short)150, (short)90, (short)320, "sound.death.drakespirit", "sound.death.drakespirit", "sound.combat.hit.drakespirit", "sound.combat.hit.drakespirit", 0.1F, 7.0F, 10.0F, 13.0F, 17.0F, 0.0F, 1.9F, 500, new int[]{683, 303, 308, 308, 310}, 20, 49, (byte)77);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(0.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(76);
+    temp.setBaseCombatRating(27.0F);
+    temp.setMaxGroupAttackSize(10);
+    temp.combatDamageType = 2;
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setCombatMoves(new int[]{1, 7});
+}
+
+private static void createSonOfNogumpTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 80.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 17.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(10053, 80.0F);
+    skills.learnTemp(10054, 50.0F);
+    skills.learnTemp(10055, 70.0F);
+    skills.learnTemp(1000, 90.0F);
+    skills.learnTemp(10028, 90.0F);
+    int[] types = new int[]{30, 8, 13, 16, 27, 24, 40, 45, 46, 50};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.nogump.son", types, (byte)4, skills, (short)20, (byte)0, (short)570, (short)200, (short)80, "sound.death.nogump.son", "sound.death.nogump.son", "sound.combat.hit.nogump.son", "sound.combat.hit.nogump.son", 0.3F, 26.0F, 30.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1500, new int[]{683}, 20, 49, (byte)81);
+    temp.setAlignment(10.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(6.0F);
+    temp.setMaxGroupAttackSize(10);
+    temp.setCombatMoves(new int[]{8, 1});
+    temp.hasHands = true;
+}
+
+private static void createSpawnUttachaTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 50.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 4.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 30.0F);
+    int[] types = new int[]{7, 13, 16, 29, 39, 24, 40, 46, 50};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.spawn.uttacha", types, (byte)9, skills, (short)5, (byte)1, (short)250, (short)100, (short)150, "sound.death.uttacha.spawn", "sound.death.uttacha.spawn", "sound.combat.hit.deathcrawler", "sound.combat.hit.deathcrawler", 0.7F, 7.0F, 0.0F, 15.0F, 0.0F, 0.0F, 0.5F, 1500, new int[]{153, 683}, 10, 34, (byte)81);
+    temp.setAlignment(-10.0F);
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER);
+    temp.setBaseCombatRating(12.0F);
+    temp.combatDamageType = 10;
+    temp.setMaxGroupAttackSize(8);
+    temp.setHandDamString("bite");
+}
+
+private static void createDeathCrawlerMinionTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 13, 16, 29, 39, 24, 40, 46, 50};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.deathcrawler", types, (byte)8, skills, (short)5, (byte)0, (short)250, (short)575, (short)198, "sound.death.deathcrawler", "sound.death.deathcrawler", "sound.combat.hit.deathcrawler", "sound.combat.hit.deathcrawler", 0.3F, 8.0F, 0.0F, 15.0F, 0.0F, 0.0F, 1.1F, 1500, new int[]{683, 310}, 10, 34, (byte)87);
+    temp.setBoundsValues(-1.065511F, -2.90318F, 1.065511F, 3.029689F);
+    temp.setAlignment(-10.0F);
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 5;
+    temp.setMaxGroupAttackSize(10);
+    temp.setHandDamString("claw");
+    temp.setUsesNewAttacks(true);
+    temp.addPrimaryAttack(new AttackAction("strike", AttackIdentifier.STRIKE, new AttackValues(8.0F, 0.02F, 3.0F, 2, 1, (byte)1, false, 3, 1.0F)));
+    temp.addPrimaryAttack(new AttackAction("poison strike", AttackIdentifier.STRIKE, new AttackValues(8.0F, 0.02F, 8.0F, 2, 1, (byte)5, false, 3, 1.0F)));
+    temp.addSecondaryAttack(new AttackAction("bite", AttackIdentifier.BITE, new AttackValues(15.0F, 0.08F, 4.0F, 3, 1, (byte)3, false, 4, 1.1F)));
+    temp.addSecondaryAttack(new AttackAction("claw", AttackIdentifier.CLAW, new AttackValues(10.0F, 0.04F, 4.0F, 3, 1, (byte)0, false, 5, 1.2F)));
+    temp.setCombatMoves(new int[]{1});
+}
+
+private static void createDemonSolTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 35.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 50.0F);
+    skills.learnTemp(106, 20.0F);
+    skills.learnTemp(10052, 70.0F);
+    int[] types = new int[]{8, 13, 16, 29, 30, 36, 39, 24, 40, 45, 46, 50, 55};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.demon.sol", types, (byte)0, skills, (short)7, (byte)0, (short)150, (short)100, (short)150, "sound.death.demon", "sound.death.demon", "sound.combat.hit.demon", "sound.combat.hit.demon", 0.5F, 6.0F, 10.0F, 20.0F, 6.0F, 12.0F, 1.5F, 1550, new int[]{204, 636, 683}, 30, 49, (byte)87);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-90.0F);
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 4;
+    temp.setOnFire(true);
+    temp.setFireRadius((byte)5);
+    temp.setMaxGroupAttackSize(6);
+}
+
+private static void createZombieTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 20.0F);
+    skills.learnTemp(101, 20.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 20.0F);
+    skills.learnTemp(1007, 1.0F);
+    skills.learnTemp(1009, 1.0F);
+    skills.learnTemp(1008, 1.0F);
+    skills.learnTemp(1019, 1.0F);
+    skills.learnTemp(10049, 1.0F);
+    skills.learnTemp(1011, 1.0F);
+    skills.learnTemp(10033, 1.0F);
+    skills.learnTemp(10031, 1.0F);
+    skills.learnTemp(10052, 70.0F);
+    int[] types = new int[]{13, 17, 7, 25, 29};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.player", types, (byte)0, skills, (short)80, (byte)0, (short)180, (short)20, (short)35, "sound.combat.death.zombie", "sound.combat.death.zombie", "sound.combat.hit.zombie", "sound.combat.hit.zombie", 1.0F, 5.0F, 3.0F, 7.0F, 0.0F, 0.0F, 0.6F, 0, new int[0], 25, 100, (byte)2);
+    temp.setBaseCombatRating(8.0F);
+    temp.hasHands = true;
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(2);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER);
+    temp.combatDamageType = 0;
+    temp.setPaintMode(1);
+    temp.setMaxGroupAttackSize(3);
+}
+
+private static void createSkeletonTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 10.0F);
+    skills.learnTemp(10052, 70.0F);
+    int[] types = new int[]{13, 7, 24};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.skeleton", types, (byte)0, skills, (short)80, (byte)0, (short)180, (short)20, (short)35, "sound.combat.death.skeleton", "sound.combat.death.skeleton", "sound.combat.hit.skeleton", "sound.combat.hit.skeleton", 1.0F, 3.0F, 3.0F, 7.0F, 0.0F, 0.0F, 0.6F, 0, new int[0], 25, 100, (byte)2);
+    temp.setBaseCombatRating(8.0F);
+    temp.hasHands = true;
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(2);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.combatDamageType = 0;
+    temp.physicalResistance = 0.2F;
+    temp.acidVulnerability = 3.0F;
+    temp.fireVulnerability = 2.0F;
+    temp.setMaxGroupAttackSize(3);
+}
+
+private static void createLadyLakeTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 90.0F);
+    skills.learnTemp(106, 99.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 17, 18, 40, 20, 37};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.ladylake", types, (byte)0, skills, (short)5, (byte)1, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.001F, 10.0F, 20.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[]{308, 308}, 3, 1, (byte)80);
+    temp.setKeepSex(true);
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(10);
+    temp.setCombatDamageType((byte)1);
+    temp.hasHands = true;
+}
+
+private static void createKingCobraTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 50.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 42.0F);
+    skills.learnTemp(101, 42.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 95.0F);
+    int[] types = new int[]{0, 3, 40, 20};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.snake.kingcobra", types, (byte)9, skills, (short)5, (byte)0, (short)20, (short)20, (short)450, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.001F, 10.0F, 0.0F, 20.0F, 0.0F, 30.0F, 0.8F, 0, new int[]{303, 310}, 1, 1, (byte)86);
+    temp.setHandDamString("bite");
+    temp.setBreathDamString("squeeze");
+    temp.setMaxAge(1000000);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER);
+    temp.setBaseCombatRating(87.0F);
+    temp.setMaxGroupAttackSize(10);
+    temp.combatDamageType = 0;
+    temp.setAlignment(-100.0F);
+}
+
+private static void createAnadondaTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 2.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 65.0F);
+    int[] types = new int[]{7, 3, 29, 12, 6, 39, 24, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.snake.anaconda", types, (byte)9, skills, (short)10, (byte)0, (short)20, (short)20, (short)350, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.3F, 0.0F, 0.0F, 6.0F, 0.0F, 10.0F, 0.8F, 50, new int[]{303, 310}, 10, 24, (byte)86);
+    temp.setBreathDamString("squeeze");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER);
+    temp.setBaseCombatRating(13.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.combatDamageType = 0;
+    temp.setMaxPercentOfCreatures(0.02F);
+}
+
+private static void createPigTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 2.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 3, 43, 27, 14, 32};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.pig", types, (byte)3, skills, (short)10, (byte)0, (short)50, (short)50, (short)150, "sound.death.pig", "sound.death.pig", "sound.combat.hit.pig", "sound.combat.hit.pig", 1.0F, 1.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.8F, 20, new int[]{303, 140, 310, 308, 308}, 10, 54, (byte)84);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(2.0F);
+    temp.setMaxGroupAttackSize(3);
+    temp.combatDamageType = 0;
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createLavaCreatureTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 12.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 90.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 50.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 32, 36, 39, 45, 55, 61};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.lavacreature", types, (byte)0, skills, (short)5, (byte)0, (short)150, (short)100, (short)150, "sound.death.lizard", "sound.death.lizard", "sound.combat.hit.lizard", "sound.combat.hit.lizard", 0.5F, 6.0F, 10.0F, 10.0F, 0.0F, 0.0F, 1.0F, 1500, new int[]{204, 446, 636}, 10, 34, (byte)87);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(16.0F);
+    temp.combatDamageType = 4;
+    temp.setOnFire(false);
+    temp.setMaxGroupAttackSize(6);
+    temp.setGlowing(false);
+    temp.setSubterranean(true);
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createLavaSpiderTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 70.0F);
+    int[] types = new int[]{7, 6, 13, 3, 29, 39, 55, 60, 61};
+    int biteDamage = 7;
+    if (Servers.localServer.PVPSERVER) {
+        biteDamage = 10;
+    }
+
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.multiped.spider.lava", types, (byte)8, skills, (short)5, (byte)0, (short)150, (short)100, (short)150, "sound.death.spider", "sound.death.spider", "sound.combat.hit.spider", "sound.combat.hit.spider", 0.6F, 6.0F, 0.0F, (float)biteDamage, 0.0F, 0.0F, 0.9F, 500, new int[]{204, 636}, 10, 54, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(13.0F);
+    temp.combatDamageType = 4;
+    temp.setOnFire(true);
+    temp.setFireRadius((byte)40);
+    temp.setMaxGroupAttackSize(6);
+    temp.setGlowing(true);
+    temp.setDenName("spider lair");
+    temp.setDenMaterial((byte)15);
+    temp.setSubterranean(true);
+    temp.setMaxPercentOfCreatures(0.05F);
+}
+
+private static void createFogSpiderTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 12.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 70.0F);
+    int[] types = new int[]{7, 6, 13, 3, 29, 39};
+    int biteDamage = 11;
+    if (Servers.localServer.PVPSERVER) {
+        biteDamage = 14;
+    }
+
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.multiped.spider.fog", types, (byte)8, skills, (short)5, (byte)0, (short)150, (short)100, (short)150, "sound.death.spider", "sound.death.spider", "sound.combat.hit.spider", "sound.combat.hit.spider", 0.2F, 3.0F, 0.0F, (float)biteDamage, 0.0F, 0.0F, 0.8F, 500, new int[0], 15, 74, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setAlignment(0.0F);
+    temp.setMaxAge(30);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(15.0F);
+    temp.combatDamageType = 5;
+    temp.setMaxGroupAttackSize(6);
+    temp.setMaxPercentOfCreatures(0.01F);
+    temp.setCombatMoves(new int[]{11});
+}
+
+private static void createSpiderTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 6, 13, 3, 29, 39, 60, 61};
+    int biteDamage = 6;
+    if (Servers.localServer.PVPSERVER) {
+        biteDamage = 10;
+    }
+
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.multiped.spider.huge", types, (byte)8, skills, (short)5, (byte)0, (short)150, (short)100, (short)150, "sound.death.spider", "sound.death.spider", "sound.combat.hit.spider", "sound.combat.hit.spider", 0.7F, 0.0F, 0.0F, (float)biteDamage, 0.0F, 0.0F, 1.2F, 500, new int[]{636, 308, 308, 308, 308}, 10, 74, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(10.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(6);
+    temp.setDenName("spider lair");
+    temp.setDenMaterial((byte)15);
+    temp.setSubterranean(true);
+    temp.setMaxPercentOfCreatures(0.08F);
+}
+
+private static void createHyenaLabilaTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 41, 25, 13, 3, 29, 36, 39};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.hyena.rabid", types, (byte)3, skills, (short)10, (byte)0, (short)40, (short)20, (short)100, "sound.death.dog", "sound.death.dog", "sound.combat.hit.dog", "sound.combat.hit.dog", 0.6F, 10.0F, 0.0F, 12.0F, 0.0F, 0.0F, 1.2F, 300, new int[0], 10, 94, (byte)87);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(5);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(8);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createSharkHugeTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 50.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 85.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{8, 38, 6, 13, 16, 29, 44, 40, 48, 37, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.shark.huge", types, (byte)9, skills, (short)3, (byte)0, (short)100, (short)1000, (short)100, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.2F, 0.0F, 0.0F, 16.0F, 10.0F, 0.0F, 1.0F, 100, new int[]{308, 308, 310}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(12.0F);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(40);
+    temp.offZ = -1.4F;
+    temp.setBonusCombatRating(12.0F);
+    temp.setMaxGroupAttackSize(8);
+}
+
+private static void createBlueWhaleTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 50.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 50.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 85.0F);
+    int[] types = new int[]{8, 38, 13, 3, 29, 44, 48, 37, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.blue.whale", types, (byte)9, skills, (short)3, (byte)0, (short)200, (short)1000, (short)300, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.3F, 0.0F, 0.0F, 25.0F, 15.0F, 0.0F, 1.0F, 100, new int[]{308, 308}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(18.0F);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(80);
+    temp.offZ = -1.4F;
+    temp.setBonusCombatRating(12.0F);
+    temp.setMaxPopulationOfCreatures(3);
+    temp.setMaxGroupAttackSize(20);
+}
+
+private static void createDolphinTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 65.0F);
+    skills.learnTemp(103, 50.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 60.0F);
+    int[] types = new int[]{8, 38, 13, 16, 29, 44, 48, 37, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.dolphin", types, (byte)9, skills, (short)3, (byte)0, (short)80, (short)250, (short)50, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.7F, 0.0F, 0.0F, 16.0F, 10.0F, 0.0F, 1.0F, 100, new int[]{308, 308}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(9.0F);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(80);
+    temp.offZ = -1.4F;
+    temp.setBonusCombatRating(7.0F);
+    temp.setMaxPercentOfCreatures(0.01F);
+    temp.setMaxPopulationOfCreatures(150);
+    temp.setMaxGroupAttackSize(4);
+}
+
+private static void createOctopusTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 35.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 60.0F);
+    int[] types = new int[]{8, 38, 13, 16, 29, 44, 48, 37, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.octopus", types, (byte)9, skills, (short)3, (byte)0, (short)100, (short)100, (short)100, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 1.0F, 0.0F, 0.0F, 14.0F, 12.0F, 0.0F, 1.0F, 100, new int[]{308, 308, 752}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(9.0F);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(80);
+    temp.offZ = -1.4F;
+    temp.setBonusCombatRating(7.0F);
+    temp.setMaxPercentOfCreatures(0.01F);
+    temp.setMaxPopulationOfCreatures(150);
+    temp.setMaxGroupAttackSize(3);
+}
+
+private static void createSealTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10052, 25.0F);
+    int[] types = new int[]{8, 12, 35, 3, 29, 44, 48, 51, 32, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.seal", types, (byte)9, skills, (short)3, (byte)0, (short)100, (short)100, (short)100, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.7F, 0.0F, 0.0F, 8.0F, 5.0F, 0.0F, 0.5F, 100, new int[]{140, 140, 71, 71, 310}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(7.0F);
+    temp.setChildTemplateId(98);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(40);
+    temp.offZ = -1.4F;
+    temp.setMaxPercentOfCreatures(0.02F);
+    temp.setMaxGroupAttackSize(4);
+    temp.setUsesNewAttacks(true);
+    temp.setBoundsValues(-0.975F, -0.9F, 0.975F, 0.9F);
+    temp.addPrimaryAttack(new AttackAction("bite", AttackIdentifier.BITE, new AttackValues(8.0F, 0.04F, 5.0F, 2, 1, (byte)3, false, 3, 1.0F)));
+    temp.addPrimaryAttack(new AttackAction("strike", AttackIdentifier.STRIKE, new AttackValues(5.0F, 0.04F, 6.0F, 2, 1, (byte)1, false, 2, 1.0F)));
+    temp.addSecondaryAttack(new AttackAction("bite", AttackIdentifier.BITE, new AttackValues(7.0F, 0.1F, 7.0F, 2, 1, (byte)3, false, 4, 1.1F)));
+    temp.addSecondaryAttack(new AttackAction("headbutt", AttackIdentifier.HEADBUTT, new AttackValues(7.0F, 0.1F, 7.0F, 2, 1, (byte)0, false, 4, 1.1F)));
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)4);
+    }
+
+}
+
+private static void createSealCubTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 15.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10052, 15.0F);
+    int[] types = new int[]{8, 12, 35, 3, 29, 44, 48, 51, 32, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish.seal.cub", types, (byte)9, skills, (short)3, (byte)0, (short)80, (short)90, (short)70, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.7F, 0.0F, 0.0F, 8.0F, 5.0F, 0.0F, 0.5F, 100, new int[]{140, 140, 71, 71, 310}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(1.0F);
+    temp.setAdultFemaleTemplateId(93);
+    temp.setAdultMaleTemplateId(93);
+    temp.combatDamageType = 3;
+    temp.hasHands = false;
+    temp.setMaxAge(20);
+    temp.setMaxGroupAttackSize(2);
+    temp.offZ = -1.4F;
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createSeaSerpentTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 55.0F);
+    skills.learnTemp(103, 60.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 80.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 85.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{8, 38, 6, 13, 16, 29, 44, 40, 37, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.snake.serpent.sea", types, (byte)9, skills, (short)20, (byte)0, (short)100, (short)1000, (short)100, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 0.05F, 0.0F, 0.0F, 56.0F, 30.0F, 0.0F, 2.0F, 50, new int[]{308, 308, 310}, 40, 59, (byte)85);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(76.0F);
+    temp.setMaxGroupAttackSize(25);
+    temp.combatDamageType = 0;
+    temp.hasHands = false;
+    temp.setMaxAge(400);
+    temp.setSizeModX(200);
+    temp.setSizeModY(200);
+    temp.setSizeModZ(200);
+    temp.setMaxPopulationOfCreatures(4);
+    temp.offZ = -5.0F;
+}
+
+private static void createAvengerOfLightTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 55.0F);
+    skills.learnTemp(103, 60.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 80.0F);
+    skills.learnTemp(106, 39.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{8, 13, 16, 27, 36, 12, 24, 45, 50, 62, 65};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.avenger.light", types, (byte)0, skills, (short)20, (byte)0, (short)370, (short)100, (short)60, "sound.death.giant", "sound.death.giant", "sound.combat.hit.giant", "sound.combat.hit.giant", 0.1F, 10.0F, 24.0F, 26.0F, 0.0F, 0.0F, 1.8F, 100, new int[]{308, 308, 310}, 40, 20, (byte)81);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(76.0F);
+    temp.setMaxGroupAttackSize(25);
+    temp.combatDamageType = 0;
+    temp.setCombatMoves(new int[]{1, 7});
+    temp.hasHands = true;
+}
+
+private static void createBoarFoTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 2.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 34.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 41, 24, 13, 3, 27, 36, 39};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.boar.wild", types, (byte)3, skills, (short)10, (byte)0, (short)50, (short)50, (short)150, "sound.death.pig", "sound.death.pig", "sound.combat.hit.pig", "sound.combat.hit.pig", 0.6F, 6.0F, 0.0F, 7.0F, 10.0F, 0.0F, 1.2F, 300, new int[]{92, 140, 303}, 10, 94, (byte)84);
+    temp.setHandDamString("kick");
+    temp.setAlignment(10.0F);
+    temp.setMaxAge(5);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(4);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createGorillaMagranonTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 7.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 24, 13, 3, 30, 27, 36, 39, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.gorilla.mountain", types, (byte)0, skills, (short)10, (byte)0, (short)210, (short)50, (short)50, "sound.death.gorilla", "sound.death.gorilla", "sound.combat.hit.gorilla", "sound.combat.hit.gorilla", 0.6F, 6.0F, 0.0F, 10.0F, 0.0F, 0.0F, 1.2F, 300, new int[]{303, 308, 308}, 10, 94, (byte)78);
+    temp.setHandDamString("claw");
+    temp.setAlignment(10.0F);
+    temp.setMaxAge(10);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(6);
+    temp.hasHands = true;
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createGuardKingdomTowerTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 17.0F);
+    skills.learnTemp(103, 21.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 17.0F);
+    if (id == 34) {
+        skills.learnTemp(10005, 45.0F);
+    } else if (id == 35) {
+        skills.learnTemp(10024, 45.0F);
+    } else if (id == 36) {
+        skills.learnTemp(10061, 45.0F);
+    } else if (id == 67) {
+        skills.learnTemp(10028, 45.0F);
+    }
+
+    skills.learnTemp(10020, 45.0F);
+    skills.learnTemp(10052, 45.0F);
+    String modelname = "model.creature.humanoid.human.guard.tower";
+    int[] types = new int[]{21, 12, 13, 17, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guard.tower", types, (byte)0, skills, (short)10, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.3F, Servers.localServer.isChallengeServer() ? 6.0F : 4.0F, 7.0F, 0.0F, 0.0F, 0.0F, 1.0F, 200, new int[0], 30, 80, (byte)80);
+    int cr = Servers.localServer.isChallengeServer() ? 12 : 6;
+    temp.setBaseCombatRating((float)cr);
+    temp.setMaxAge(20);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(6);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createDummyDollTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 60.0F);
+    skills.learnTemp(100, 20.0F);
+    skills.learnTemp(101, 20.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 20.0F);
+    skills.learnTemp(10052, 10.0F);
+    int[] types = new int[]{12, 13, 17};
+    CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.player", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.2F, 2.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0, new int[0], 5, 0, (byte)87);
+}
+
+private static void createCatWildTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 8.0F);
+    skills.learnTemp(104, 13.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 3.0F);
+    int[] types = new int[]{7, 3, 6, 32, 29, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.cat.wild", types, (byte)3, skills, (short)3, (byte)0, (short)20, (short)10, (short)300, "sound.death.cat", "sound.death.cat", "sound.combat.hit.cat", "sound.combat.hit.cat", 1.0F, 1.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.7F, 500, new int[]{313}, 5, 10, (byte)75);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(40);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(2.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenName("wildcat hideout");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.02F);
+}
+
+private static void createCaveBugTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 13.0F);
+    skills.learnTemp(103, 5.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 16.0F);
+    int[] types = new int[]{7, 3, 6, 13, 27, 32, 34, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.insect.cavebug", types, (byte)3, skills, (short)5, (byte)0, (short)30, (short)30, (short)30, "sound.death.insect", "sound.death.insect", "sound.combat.hit.insect", "sound.combat.hit.insect", 0.9F, 3.0F, 0.0F, 6.0F, 0.0F, 0.0F, 0.6F, 50, new int[]{439, 439, 439, 439, 439, 439, 439, 439, 439}, 10, 30, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(5.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenName("cave bug mound");
+    temp.setDenMaterial((byte)15);
+    temp.setSubterranean(true);
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createTortoiseTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 22.0F);
+    skills.learnTemp(104, 6.0F);
+    skills.learnTemp(103, 5.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 6.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 36.0F);
+    int[] types = new int[]{7, 3, 6, 35, 44, 28, 32, 51, 48, 12, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.tortoise", types, (byte)3, skills, (short)5, (byte)0, (short)30, (short)30, (short)30, "sound.death.insect", "sound.death.insect", "sound.combat.hit.insect", "sound.combat.hit.insect", 0.3F, 0.0F, 0.0F, 12.0F, 0.0F, 0.0F, 0.3F, 50, new int[]{898, 308, 308, 92}, 10, 10, (byte)85);
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(12.0F);
+    temp.setMaxGroupAttackSize(3);
+    temp.setMaxPercentOfCreatures(0.02F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)6);
+    }
+
+}
+
+private static void createCrabTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 12.0F);
+    skills.learnTemp(104, 16.0F);
+    skills.learnTemp(103, 5.0F);
+    skills.learnTemp(100, 4.0F);
+    skills.learnTemp(101, 6.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 16.0F);
+    int[] types = new int[]{7, 3, 6, 13, 27, 32, 51, 48, 12, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.crab", types, (byte)3, skills, (short)5, (byte)0, (short)30, (short)30, (short)30, "sound.death.insect", "sound.death.insect", "sound.combat.hit.insect", "sound.combat.hit.insect", 0.7F, 5.0F, 0.0F, 6.0F, 0.0F, 0.0F, 0.8F, 50, new int[]{900, 900, 308, 308, 900}, 10, 30, (byte)85);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(5.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(3);
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createLionMountainTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 3.0F);
+    skills.learnTemp(103, 15.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 25.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 6.0F);
+    int[] types = new int[]{7, 3, 6, 13, 30, 32, 29, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.lion.mountain", types, (byte)3, skills, (short)5, (byte)0, (short)60, (short)30, (short)90, "sound.death.lion", "sound.death.lion", "sound.combat.hit.lion", "sound.combat.hit.lion", 0.95F, 3.0F, 0.0F, 5.0F, 0.0F, 0.0F, 1.0F, 1200, new int[]{92, 305, 313, 308, 308}, 10, 40, (byte)75);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(3.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenName("mountain lion hideout");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createRatLargeTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 5.0F);
+    skills.learnTemp(104, 10.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 8.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 2.0F);
+    int[] types = new int[]{7, 3, 6, 12, 13, 27, 32, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.rat.large", types, (byte)3, skills, (short)3, (byte)0, (short)20, (short)10, (short)50, "sound.death.rat", "sound.death.rat", "sound.combat.hit.rat", "sound.combat.hit.rat", 1.0F, 1.0F, 0.0F, 2.0F, 0.0F, 0.0F, 0.7F, 400, new int[]{313, 310, 308, 308}, 10, 40, (byte)78);
+    temp.setHandDamString("claw");
+    temp.setMaxAge(30);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(2.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenName("garbage pile");
+    temp.setSubterranean(true);
+    temp.setMaxPercentOfCreatures(0.03F);
+}
+
+private static void createDragonRedTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 90.0F);
+    skills.learnTemp(103, 99.0F);
+    skills.learnTemp(100, 60.0F);
+    skills.learnTemp(101, 57.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10052, 95.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.dragon.red", types, (byte)6, skills, (short)20, (byte)0, (short)280, (short)210, (short)666, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.017F, 35.0F, 38.0F, 53.0F, 67.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-90.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(16);
+    temp.setBaseCombatRating(100.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDragonBlueTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 90.0F);
+    skills.learnTemp(103, 95.0F);
+    skills.learnTemp(100, 56.0F);
+    skills.learnTemp(101, 57.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10052, 90.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.dragon.blue", types, (byte)6, skills, (short)20, (byte)0, (short)280, (short)210, (short)666, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.1F, 35.0F, 38.0F, 50.0F, 63.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-90.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(91);
+    temp.setBaseCombatRating(100.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDragonGreenTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 84.0F);
+    skills.learnTemp(104, 90.0F);
+    skills.learnTemp(103, 90.0F);
+    skills.learnTemp(100, 56.0F);
+    skills.learnTemp(101, 57.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10052, 90.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.dragon.green", types, (byte)6, skills, (short)20, (byte)0, (short)280, (short)210, (short)666, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.1F, 35.0F, 38.0F, 50.0F, 58.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-90.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(90);
+    temp.setBaseCombatRating(100.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDragonBlackTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 90.0F);
+    skills.learnTemp(103, 90.0F);
+    skills.learnTemp(100, 56.0F);
+    skills.learnTemp(101, 57.0F);
+    skills.learnTemp(105, 70.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10052, 90.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.dragon.black", types, (byte)6, skills, (short)20, (byte)0, (short)280, (short)210, (short)666, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.2F, 35.0F, 38.0F, 58.0F, 62.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-90.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(89);
+    temp.setBaseCombatRating(100.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDragonWhiteTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 90.0F);
+    skills.learnTemp(103, 85.0F);
+    skills.learnTemp(100, 56.0F);
+    skills.learnTemp(101, 57.0F);
+    skills.learnTemp(105, 70.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10052, 90.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.dragon.white", types, (byte)6, skills, (short)20, (byte)0, (short)280, (short)210, (short)666, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.1F, 35.0F, 38.0F, 55.0F, 60.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-90.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(92);
+    temp.setBaseCombatRating(100.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDrakeRedTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 50.0F);
+    skills.learnTemp(104, 65.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 27.0F);
+    skills.learnTemp(101, 40.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 12, 6, 13, 16, 32, 29, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.red", types, (byte)6, skills, (short)20, (byte)1, (short)170, (short)100, (short)450, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.15F, 20.0F, 26.0F, 52.0F, 54.0F, 0.0F, 1.8F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-80.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(103);
+    temp.setBaseCombatRating(95.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 3});
+}
+
+private static void createDrakeBlueTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 55.0F);
+    skills.learnTemp(104, 75.0F);
+    skills.learnTemp(103, 65.0F);
+    skills.learnTemp(100, 27.0F);
+    skills.learnTemp(101, 34.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 12, 6, 13, 16, 32, 29, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.blue", types, (byte)6, skills, (short)20, (byte)1, (short)170, (short)100, (short)450, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.15F, 20.0F, 26.0F, 50.0F, 58.0F, 0.0F, 1.8F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-80.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(104);
+    temp.setBaseCombatRating(95.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2});
+}
+
+private static void createDrakeWhiteTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 55.0F);
+    skills.learnTemp(103, 60.0F);
+    skills.learnTemp(100, 24.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 35.0F);
+    skills.learnTemp(106, 39.0F);
+    skills.learnTemp(10052, 75.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.white", types, (byte)6, skills, (short)30, (byte)1, (short)150, (short)90, (short)420, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.2F, 21.0F, 24.0F, 53.0F, 57.0F, 45.0F, 1.9F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setBreathDamString("burn");
+    temp.setAlignment(-60.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(19);
+    temp.setBaseCombatRating(95.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2});
+}
+
+private static void createDrakeGreenTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 60.0F);
+    skills.learnTemp(104, 65.0F);
+    skills.learnTemp(103, 80.0F);
+    skills.learnTemp(100, 17.0F);
+    skills.learnTemp(101, 27.0F);
+    skills.learnTemp(105, 50.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 6, 13, 16, 32, 29, 12, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.green", types, (byte)6, skills, (short)20, (byte)0, (short)180, (short)110, (short)480, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.15F, 20.0F, 24.0F, 55.0F, 56.0F, 0.0F, 1.6F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-60.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(17);
+    temp.setBaseCombatRating(96.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 5});
+}
+
+private static void createDrakeBlackTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 50.0F);
+    skills.learnTemp(104, 75.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 27.0F);
+    skills.learnTemp(101, 37.0F);
+    skills.learnTemp(105, 55.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 85.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 19, 41, 7, 12, 6, 13, 16, 32, 29, 40};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.drake.black", types, (byte)6, skills, (short)20, (byte)1, (short)170, (short)100, (short)450, "sound.death.dragon", "sound.death.dragon", "sound.combat.hit.dragon", "sound.combat.hit.dragon", 0.12F, 20.0F, 26.0F, 56.0F, 58.0F, 0.0F, 1.8F, 500, new int[]{867, 868, 303, 308, 308, 310}, 40, 99, (byte)76);
+    temp.setHeadbuttDamString("tailwhip");
+    temp.setKickDamString("wingbuff");
+    temp.setAlignment(-70.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(18);
+    temp.setBaseCombatRating(98.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{1, 2, 6});
+}
+
+private static void createForestGiantTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 60.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 5.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 19.0F);
+    skills.learnTemp(10052, 65.0F);
+    skills.learnTemp(1023, 80.0F);
+    skills.learnTemp(10064, 60.0F);
+    int[] types = new int[]{20, 7, 6, 13, 16, 27, 32, 40, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.giant.forest", types, (byte)0, skills, (short)20, (byte)0, (short)370, (short)100, (short)60, "sound.death.giant", "sound.death.giant", "sound.combat.hit.giant", "sound.combat.hit.giant", 0.02F, 10.0F, 24.0F, 26.0F, 0.0F, 0.0F, 1.5F, 1800, new int[]{308, 308, 310, 868, 867}, 40, 99, (byte)87);
+    temp.setAlignment(-20.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(76.0F);
+    temp.combatDamageType = 0;
+    temp.setCombatMoves(new int[]{1, 5, 6});
+    temp.hasHands = true;
+}
+
+private static void createCyclopsTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 80.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 80.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 7.0F);
+    skills.learnTemp(105, 55.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(10064, 90.0F);
+    int[] types = new int[]{30, 20, 7, 6, 13, 16, 27, 32, 40, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.kyklops", types, (byte)5, skills, (short)20, (byte)0, (short)570, (short)200, (short)80, "sound.death.giant", "sound.death.giant", "sound.combat.hit.giant", "sound.combat.hit.giant", 0.015F, 26.0F, 30.0F, 0.0F, 0.0F, 0.0F, 1.8F, 1800, new int[]{308, 310, 868, 867}, 40, 99, (byte)81);
+    temp.setAlignment(-10.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(86.0F);
+    temp.combatDamageType = 0;
+    temp.setCombatMoves(new int[]{4, 1, 6});
+    temp.hasHands = true;
+}
+
+private static void createTrollKingTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 70.0F);
+    skills.learnTemp(104, 45.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 20.0F);
+    skills.learnTemp(105, 45.0F);
+    skills.learnTemp(106, 29.0F);
+    skills.learnTemp(1023, 80.0F);
+    skills.learnTemp(10052, 80.0F);
+    skills.learnTemp(10064, 90.0F);
+    int[] types = new int[]{20, 7, 6, 13, 16, 18, 29, 30, 32, 40, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.troll.king", types, (byte)0, skills, (short)20, (byte)0, (short)270, (short)60, (short)60, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.02F, 20.0F, 0.0F, 26.0F, 0.0F, 0.0F, 1.7F, 200, new int[]{303, 310, 868, 867}, 40, 99, (byte)81);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-60.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_RING);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(86.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{4, 1});
+    temp.hasHands = true;
+}
+
+private static void createTrollTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 39.0F);
+    skills.learnTemp(106, 7.0F);
+    skills.learnTemp(10052, 40.0F);
+    skills.learnTemp(10064, 70.0F);
+    int[] types = new int[]{7, 6, 40, 13, 16, 18, 29, 30, 32, 36, 39, 45, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.troll.standard", types, (byte)0, skills, (short)5, (byte)0, (short)230, (short)50, (short)50, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.4F, 8.0F, 4.0F, 12.0F, 0.0F, 0.0F, 1.2F, 1700, new int[]{303, 310}, 10, 94, (byte)81);
+    temp.setHandDamString("claw");
+    temp.setLeaderTemplateId(27);
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(300);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(12.0F);
+    temp.setBonusCombatRating(5.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(8);
+    temp.setDenName("troll mound");
+    temp.setDenMaterial((byte)15);
+    temp.setSubterranean(true);
+    temp.hasHands = true;
+    temp.setMaxPercentOfCreatures(0.06F);
+    temp.setUsesNewAttacks(true);
+    temp.setBoundsValues(-0.5F, -0.5F, 0.5F, 0.5F);
+    temp.addPrimaryAttack(new AttackAction("maul", AttackIdentifier.MAUL, new AttackValues(7.0F, 0.04F, 6.0F, 3, 2, (byte)0, true, 3, 1.4F)));
+    temp.addPrimaryAttack(new AttackAction("strike", AttackIdentifier.STRIKE, new AttackValues(7.0F, 0.04F, 4.0F, 3, 1, (byte)0, false, 3, 1.4F)));
+    temp.addSecondaryAttack(new AttackAction("kick", AttackIdentifier.KICK, new AttackValues(4.0F, 0.04F, 5.0F, 3, 1, (byte)0, false, 3, 2.1F)));
+    temp.addSecondaryAttack(new AttackAction("bite", AttackIdentifier.BITE, new AttackValues(10.0F, 0.08F, 7.0F, 3, 1, (byte)3, false, 3, 2.0F)));
+    temp.addSecondaryAttack(new AttackAction("kick", AttackIdentifier.CLAW, new AttackValues(5.0F, 0.1F, 7.0F, 3, 1, (byte)1, false, 3, 1.8F)));
+}
+
+private static void createGoblinLeaderTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 50.0F);
+    skills.learnTemp(100, 19.0F);
+    skills.learnTemp(101, 25.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 19.0F);
+    skills.learnTemp(10052, 60.0F);
+    skills.learnTemp(10027, 90.0F);
+    skills.learnTemp(10006, 90.0F);
+    skills.learnTemp(1023, 80.0F);
+    int[] types = new int[]{20, 7, 6, 13, 16, 29, 30, 32, 40, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.goblin.leader", types, (byte)0, skills, (short)20, (byte)0, (short)150, (short)30, (short)20, "sound.death.goblin", "sound.death.goblin", "sound.combat.hit.goblin", "sound.combat.hit.goblin", 0.14F, 18.0F, 25.0F, 0.0F, 0.0F, 0.0F, 1.5F, 1200, new int[]{303, 868, 867}, 40, 99, (byte)81);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-50.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(68.0F);
+    temp.combatDamageType = 2;
+    temp.setCombatMoves(new int[]{4});
+    temp.hasHands = true;
+}
+
+private static void createGoblinTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 12.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 26.0F);
+    skills.learnTemp(106, 7.0F);
+    skills.learnTemp(10052, 14.0F);
+    int[] types = new int[]{7, 6, 13, 16, 29, 30, 32, 34, 45, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.goblin.standard", types, (byte)0, skills, (short)5, (byte)0, (short)130, (short)30, (short)20, "sound.death.goblin", "sound.death.goblin", "sound.combat.hit.goblin", "sound.combat.hit.goblin", 0.7F, 3.0F, 5.0F, 0.0F, 0.0F, 0.0F, 0.7F, 1500, new int[]{1250}, 10, 94, (byte)81);
+    temp.setHandDamString("claw");
+    temp.setLeaderTemplateId(26);
+    temp.setAlignment(-40.0F);
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(6.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenName("goblin hut");
+    temp.hasHands = true;
+    temp.setMaxPercentOfCreatures(0.06F);
+}
+
+private static void createScorpionTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 2.0F);
+    skills.learnTemp(101, 25.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 24.0F);
+    int[] types = new int[]{7, 41, 6, 13, 16, 29, 32, 34, 39, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.multiped.scorpion", types, (byte)8, skills, (short)5, (byte)0, (short)130, (short)30, (short)20, "sound.death.insect", "sound.death.insect", "sound.combat.hit.insect", "sound.combat.hit.insect", 0.4F, 6.0F, 10.0F, 13.0F, 0.0F, 0.0F, 0.75F, 1700, new int[]{92, 439}, 7, 64, (byte)82);
+    temp.setHandDamString("claw");
+    temp.setBreathDamString("sting");
+    temp.setAlignment(-40.0F);
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(8.0F);
+    temp.setBonusCombatRating(8.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(6);
+    temp.setDenName("scorpion stone");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.05F);
+    temp.setNoServerSounds(true);
+}
+
+private static void createUnicornTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 14.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 60.0F);
+    skills.learnTemp(106, 14.0F);
+    skills.learnTemp(10052, 35.0F);
+    int[] types = new int[]{7, 41, 3, 32, 28, 9, 39, 35};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.unicorn", types, (byte)1, skills, (short)5, (byte)0, (short)180, (short)50, (short)250, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 0.7F, 6.0F, 10.0F, 8.0F, 0.0F, 0.0F, 1.6F, 1500, new int[]{92, 311, 71}, 10, 60, (byte)79);
+    temp.setAlignment(100.0F);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(400);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(11.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(4);
+    temp.setDenName("unicorn rustle");
+    temp.setMaxPercentOfCreatures(0.02F);
+    temp.setChildTemplateId(118);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)6);
+    }
+
+}
+
+private static void createUnicornFoalTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 5.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 10.0F);
+    skills.learnTemp(10052, 15.0F);
+    int[] types = new int[]{7, 3, 9, 28, 32, 63, 35, 39};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.unicorn.foal", types, (byte)1, skills, (short)3, (byte)0, (short)100, (short)50, (short)75, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 0.9F, 2.0F, 4.0F, 3.0F, 0.0F, 0.0F, 1.2F, 900, new int[]{311, 71, 309}, 5, 20, (byte)79);
+    temp.setAlignment(100.0F);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(100);
+    temp.setAdultFemaleTemplateId(21);
+    temp.setAdultMaleTemplateId(21);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(5.0F);
+    temp.setMaxGroupAttackSize(2);
+    temp.combatDamageType = 0;
+    temp.setCorpseName("unicorn.foal.");
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createBearBlackTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 26.0F);
+    skills.learnTemp(104, 26.0F);
+    skills.learnTemp(103, 26.0F);
+    skills.learnTemp(100, 4.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 30.0F);
+    int[] types = new int[]{7, 3, 6, 13, 29, 32, 39, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.bear.black", types, (byte)2, skills, (short)5, (byte)0, (short)160, (short)50, (short)50, "sound.death.bear", "sound.death.bear", "sound.combat.hit.bear", "sound.combat.hit.bear", 0.8F, 4.0F, 0.0F, 11.0F, 0.0F, 0.0F, 1.0F, 1500, new int[]{303, 302}, 10, 80, (byte)72);
+    temp.setHandDamString("maul");
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(9.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(6);
+    temp.setDenName("bear cave");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.05F);
+}
+
+private static void createBearBrownTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 4.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{8, 41, 3, 6, 12, 13, 32, 29, 39, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.bear.brown", types, (byte)2, skills, (short)5, (byte)0, (short)230, (short)50, (short)50, "sound.death.bear", "sound.death.bear", "sound.combat.hit.bear", "sound.combat.hit.bear", 0.75F, 7.0F, 0.0F, 10.0F, 0.0F, 0.0F, 1.2F, 1500, new int[]{92, 303, 302}, 10, 70, (byte)72);
+    temp.setBoundsValues(-0.5F, -1.0F, 0.5F, 1.42F);
+    temp.setHandDamString("maul");
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(9.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(4);
+    temp.setDenName("bear cave");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.04F);
+    temp.setUsesNewAttacks(true);
+    temp.addPrimaryAttack(new AttackAction("maul", AttackIdentifier.STRIKE, new AttackValues(7.0F, 0.01F, 6.0F, 3, 1, (byte)0, false, 2, 1.0F)));
+    temp.addPrimaryAttack(new AttackAction("gnaw", AttackIdentifier.BITE, new AttackValues(5.0F, 0.02F, 8.0F, 3, 1, (byte)3, false, 4, 1.1F)));
+    temp.addSecondaryAttack(new AttackAction("bite", AttackIdentifier.BITE, new AttackValues(10.0F, 0.05F, 6.0F, 2, 1, (byte)3, false, 3, 1.1F)));
+    temp.addSecondaryAttack(new AttackAction("scratch", AttackIdentifier.STRIKE, new AttackValues(7.0F, 0.05F, 6.0F, 2, 1, (byte)1, false, 8, 1.0F)));
+}
+
+private static void createEasterBunnyTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 5.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 70.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 6.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 10.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{8, 3, 4, 30, 35};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.easterbunny", types, (byte)3, skills, (short)5, (byte)0, (short)20, (short)30, (short)50, "sound.death.wolf", "sound.death.wolf", "sound.combat.hit.wolf", "sound.combat.hit.wolf", 0.85F, 11.0F, 0.0F, 9.0F, 0.0F, 0.0F, 2.0F, 1900, new int[]{92, 305, 466}, 0, 0, (byte)78);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(3);
+    temp.setEggLayer(true);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(50.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(15);
+}
+
+private static void createCrocodileTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 35.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 12.0F);
+    skills.learnTemp(105, 65.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 50.0F);
+    int[] types = new int[]{6, 41, 7, 3, 13, 32, 29, 12, 39, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.crocodile", types, (byte)3, skills, (short)5, (byte)0, (short)80, (short)30, (short)120, "sound.death.croc", "sound.death.croc", "sound.combat.hit.croc", "sound.combat.hit.croc", 0.35F, 6.0F, 0.0F, 10.0F, 0.0F, 0.0F, 1.2F, 400, new int[]{92, 305, 71, 310}, 6, 40, (byte)78);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(200);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(9.0F);
+    temp.setBonusCombatRating(7.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(4);
+    temp.setDenName("crocodile lair");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.04F);
+}
+
+private static void createDogTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 7.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 7.0F);
+    int[] types = new int[]{8, 3, 13, 43, 32, 27, 12};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.dog", types, (byte)3, skills, (short)5, (byte)0, (short)80, (short)30, (short)120, "sound.death.dog", "sound.death.dog", "sound.combat.hit.dog", "sound.combat.hit.dog", 0.95F, 2.0F, 0.0F, 3.0F, 0.0F, 0.0F, 1.2F, 100, new int[]{92, 140, 305, 313}, 20, 10, (byte)74);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(70);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(3.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(2);
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createBlackWolfTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 7.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 10.0F);
+    int[] types = new int[]{8, 3, 6, 13, 32, 29, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.wolf.black", types, (byte)3, skills, (short)5, (byte)0, (short)80, (short)30, (short)150, "sound.death.wolf", "sound.death.wolf", "sound.combat.hit.wolf", "sound.combat.hit.wolf", 0.85F, 3.0F, 0.0F, 5.0F, 0.0F, 0.0F, 1.2F, 1500, new int[]{140, 92, 305, 302}, 20, 60, (byte)74);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(70);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(6.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(3);
+    temp.setDenName("wolf den");
+    temp.setDenMaterial((byte)15);
+    temp.setMaxPercentOfCreatures(0.08F);
+}
+
+private static void createGuardSpiritGoodLenientTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10052, 30.0F);
+    int[] types = new int[]{22, 23, 12, 13};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.spirit.guard", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.4F, 3.0F, 5.0F, 0.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    temp.setAlignment(40.0F);
+    temp.setBaseCombatRating(6.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(4);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuardSpiritEvilLenientTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10052, 30.0F);
+    int[] types = new int[]{22, 23, 12, 13};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.spirit.sentry", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.4F, 3.0F, 5.0F, 0.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    temp.setAlignment(-40.0F);
+    temp.setBaseCombatRating(6.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(4);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createWraithTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 40.0F);
+    skills.learnTemp(103, 23.0F);
+    skills.learnTemp(100, 18.0F);
+    skills.learnTemp(101, 21.0F);
+    skills.learnTemp(105, 19.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10052, 50.0F);
+    int[] types = new int[]{22, 13, 24};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.spirit.wraith", types, (byte)0, skills, (short)25, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.3F, 4.0F, 0.0F, 5.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    temp.setAlignment(-80.0F);
+    temp.setBaseCombatRating(24.0F);
+    temp.combatDamageType = 8;
+    temp.setMaxGroupAttackSize(4);
+    temp.hasHands = true;
+    temp.physicalResistance = 0.3F;
+    temp.fireVulnerability = 2.0F;
+}
+
+private static void createGuardSpiritAbleTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 33.0F);
+    skills.learnTemp(100, 18.0F);
+    skills.learnTemp(101, 21.0F);
+    skills.learnTemp(105, 19.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10052, 50.0F);
+    int[] types = new int[]{22, 23, 12, 13};
+    String model = "model.creature.humanoid.human.spirit.avenger";
+    if (id == 31) {
+        model = "model.creature.humanoid.human.spirit.brute";
+    }
+
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, model, types, (byte)0, skills, (short)25, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.3F, 4.0F, 5.0F, 0.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    if (id == 31) {
+        temp.setAlignment(-50.0F);
+    } else {
+        temp.setAlignment(50.0F);
+    }
+
+    temp.setBaseCombatRating(8.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(4);
+    temp.hasHands = true;
+}
+
+private static void createGuardSpiritEvilDangerousTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 17.0F);
+    skills.learnTemp(101, 27.0F);
+    skills.learnTemp(105, 24.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 80.0F);
+    int[] types = new int[]{22, 23, 12, 13};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.spirit.shadow", types, (byte)0, skills, (short)45, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.3F, 5.0F, 7.0F, 5.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setAlignment(-70.0F);
+    temp.setBaseCombatRating(Servers.localServer.isChallengeOrEpicServer() ? 25.0F : 20.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(Servers.localServer.isChallengeOrEpicServer() ? 4 : 6);
+    temp.hasHands = true;
+}
+
+private static void createGuardSpiritGoodDangerousTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 17.0F);
+    skills.learnTemp(101, 27.0F);
+    skills.learnTemp(105, 24.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 80.0F);
+    int[] types = new int[]{22, 23, 12, 13};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.spirit.templar", types, (byte)0, skills, (short)45, (byte)0, (short)180, (short)20, (short)35, "sound.death.spirit.male", "sound.death.spirit.female", "sound.combat.hit.spirit.male", "sound.combat.hit.spirit.female", 0.3F, 5.0F, 7.0F, 5.0F, 0.0F, 0.0F, 1.5F, 100, new int[0], 100, 100, (byte)2);
+    temp.setAlignment(70.0F);
+    temp.setBaseCombatRating(Servers.localServer.isChallengeOrEpicServer() ? 25.0F : 20.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(Servers.localServer.isChallengeOrEpicServer() ? 4 : 6);
+    temp.hasHands = true;
+}
+
+private static void createGuardBrutalTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 30.0F);
+    skills.learnTemp(104, 30.0F);
+    skills.learnTemp(103, 36.0F);
+    skills.learnTemp(100, 30.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 30.0F);
+    skills.learnTemp(10005, 90.0F);
+    skills.learnTemp(10028, 80.0F);
+    skills.learnTemp(10025, 80.0F);
+    skills.learnTemp(10001, 80.0F);
+    skills.learnTemp(10024, 80.0F);
+    skills.learnTemp(10023, 80.0F);
+    skills.learnTemp(10021, 80.0F);
+    skills.learnTemp(10020, 80.0F);
+    skills.learnTemp(10006, 90.0F);
+    skills.learnTemp(10052, 90.0F);
+    int[] types = new int[]{12, 13, 17, 24, 45, 40, 21, 53, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guard.tower", types, (byte)0, skills, (short)10, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.2F, 5.0F, 7.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 100, 100, (byte)80);
+    temp.setBaseCombatRating(23.0F);
+    temp.setMaxGroupAttackSize(6);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuardToughTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 24.0F);
+    skills.learnTemp(104, 22.0F);
+    skills.learnTemp(103, 31.0F);
+    skills.learnTemp(100, 18.0F);
+    skills.learnTemp(101, 21.0F);
+    skills.learnTemp(105, 19.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10005, 90.0F);
+    skills.learnTemp(10028, 60.0F);
+    skills.learnTemp(10025, 60.0F);
+    skills.learnTemp(10001, 60.0F);
+    skills.learnTemp(10024, 60.0F);
+    skills.learnTemp(10023, 60.0F);
+    skills.learnTemp(10021, 60.0F);
+    skills.learnTemp(10020, 60.0F);
+    skills.learnTemp(10006, 60.0F);
+    skills.learnTemp(10052, 90.0F);
+    int[] types = new int[]{12, 13, 17, 24, 45, 40, 53, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guard.tower", types, (byte)0, skills, (short)10, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.3F, 5.0F, 7.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 70, 100, (byte)80);
+    temp.setBaseCombatRating(20.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuardAbleTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 22.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 26.0F);
+    skills.learnTemp(100, 18.0F);
+    skills.learnTemp(101, 18.0F);
+    skills.learnTemp(105, 19.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10005, 70.0F);
+    skills.learnTemp(10028, 60.0F);
+    skills.learnTemp(10025, 60.0F);
+    skills.learnTemp(10001, 60.0F);
+    skills.learnTemp(10024, 60.0F);
+    skills.learnTemp(10023, 60.0F);
+    skills.learnTemp(10021, 60.0F);
+    skills.learnTemp(10020, 60.0F);
+    skills.learnTemp(10006, 60.0F);
+    skills.learnTemp(10052, 75.0F);
+    int[] types = new int[]{11, 12, 13, 17, 45, 40, 53, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guard.tower", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.4F, 4.0F, 5.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 60, 100, (byte)80);
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuardDecentTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 17.0F);
+    skills.learnTemp(103, 21.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 17.0F);
+    skills.learnTemp(10005, 45.0F);
+    skills.learnTemp(10028, 45.0F);
+    skills.learnTemp(10025, 45.0F);
+    skills.learnTemp(10001, 45.0F);
+    skills.learnTemp(10024, 45.0F);
+    skills.learnTemp(10023, 45.0F);
+    skills.learnTemp(10021, 45.0F);
+    skills.learnTemp(10020, 45.0F);
+    skills.learnTemp(10006, 45.0F);
+    skills.learnTemp(10052, 45.0F);
+    int[] types = new int[]{11, 12, 13, 17, 45, 40, 53, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guardDecent", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.5F, 3.0F, 4.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 50, 100, (byte)80);
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuardLenientTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 17.0F);
+    skills.learnTemp(104, 17.0F);
+    skills.learnTemp(103, 18.0F);
+    skills.learnTemp(100, 15.0F);
+    skills.learnTemp(101, 15.0F);
+    skills.learnTemp(105, 15.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10005, 40.0F);
+    skills.learnTemp(10028, 40.0F);
+    skills.learnTemp(10025, 40.0F);
+    skills.learnTemp(10001, 40.0F);
+    skills.learnTemp(10024, 40.0F);
+    skills.learnTemp(10023, 40.0F);
+    skills.learnTemp(10021, 40.0F);
+    skills.learnTemp(10020, 40.0F);
+    skills.learnTemp(10006, 40.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{11, 12, 13, 17, 45, 40, 53, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guardLenient", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 0.6F, 4.0F, 5.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 40, 100, (byte)80);
+    temp.setMaxGroupAttackSize(4);
+    temp.setBaseCombatRating(99.0F);
+    temp.setNoSkillgain(true);
+    temp.hasHands = true;
+}
+
+private static void createGuideHotsTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guide", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.combatDamageType = 1;
+    temp.setTutorial(true);
+    temp.hasHands = true;
+}
+
+private static void createGuideTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.guide", types, (byte)0, skills, (short)5, (byte)1, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.combatDamageType = 1;
+    temp.setTutorial(true);
+    temp.hasHands = true;
+}
+
+private static void createEvilSantaTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.evilsanta", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(99.0F);
+    temp.combatDamageType = 1;
+    temp.hasHands = true;
+}
+
+private static void createSantaClausTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.santa", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[]{310}, 3, 0, (byte)80);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(99.0F);
+    temp.combatDamageType = 1;
+    temp.hasHands = true;
+}
+
+private static void createBartenderTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 14.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17, 26};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.bartender", types, (byte)0, skills, (short)2, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.setBaseCombatRating(79.0F);
+    temp.hasHands = true;
+}
+
+private static void createSalesmanTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 30.0F);
+    skills.learnTemp(101, 30.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 4.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 1, 4, 5, 12, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.salesman", types, (byte)0, skills, (short)2, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.setBaseCombatRating(70.0F);
+    temp.hasHands = true;
+}
+
+private static void createChickenTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 1.0F);
+    skills.learnTemp(104, 5.0F);
+    skills.learnTemp(103, 1.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 1.0F);
+    int[] types = new int[]{7, 3, 14, 43, 28, 32, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.chicken", types, (byte)7, skills, (short)3, (byte)0, (short)10, (short)5, (short)10, "sound.death.hen", "sound.death.hen", "sound.combat.hit.hen", "sound.combat.hit.hen", 1.0F, 0.5F, 0.0F, 1.0F, 0.0F, 0.0F, 0.5F, 100, new int[0], 1, 0, (byte)77);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(20);
+    temp.setAdultFemaleTemplateId(45);
+    temp.setAdultMaleTemplateId(52);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(1.0F);
+    temp.combatDamageType = 2;
+    temp.setColourNames(new String[]{"white", "brown", "black"});
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createHenTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 3.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 1.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 3, 14, 43, 28, 32, 35, 49, 64};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.hen", types, (byte)7, skills, (short)3, (byte)1, (short)30, (short)14, (short)50, "sound.death.hen", "sound.death.hen", "sound.combat.hit.hen", "sound.combat.hit.hen", 1.0F, 0.5F, 0.0F, 1.0F, 0.0F, 0.0F, 0.5F, 100, new int[]{140, 1352, 1352, 1352}, 1, 0, (byte)77);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setEggLayer(true);
+    temp.setEggTemplateId(48);
+    temp.setMaxAge(20);
+    temp.keepSex = true;
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(1.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxPercentOfCreatures(0.02F);
+    temp.setColourNames(new String[]{"white", "brown", "black"});
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createPheasantTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 5.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 5.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 7.0F);
+    int[] types = new int[]{7, 3, 28, 32, 35, 49, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.pheasant", types, (byte)7, skills, (short)3, (byte)0, (short)30, (short)14, (short)50, "sound.death.pheasant", "sound.death.pheasant", "sound.combat.hit.pheasant", "sound.combat.hit.pheasant", 1.0F, 1.0F, 0.0F, 1.5F, 0.0F, 0.0F, 1.0F, 100, new int[]{140, 1352, 1352, 1352, 1352, 1352}, 1, 0, (byte)78);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(1.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(2);
+    temp.setMaxPercentOfCreatures(0.01F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)4);
+    }
+
+}
+
+private static void createRoosterTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 5.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 5.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 10.0F);
+    int[] types = new int[]{7, 3, 14, 43, 28, 32, 64};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.rooster", types, (byte)7, skills, (short)3, (byte)0, (short)30, (short)14, (short)50, "sound.death.hen", "sound.death.hen", "sound.combat.hit.hen", "sound.combat.hit.hen", 1.0F, 0.5F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 100, new int[]{140, 1352, 1352, 1352}, 1, 0, (byte)77);
+    temp.setHandDamString("claw");
+    temp.setKickDamString("claw");
+    temp.setMaxAge(30);
+    temp.keepSex = true;
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(1.0F);
+    temp.setMaxGroupAttackSize(2);
+    temp.combatDamageType = 2;
+    temp.setMaxPercentOfCreatures(0.002F);
+    temp.setColourNames(new String[]{"brown", "white", "black"});
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)4);
+    }
+
+}
+
+private static void createDeerTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 33.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 8.0F);
+    skills.learnTemp(10052, 10.0F);
+    int[] types = new int[]{7, 3, 9, 28, 32, 49, 35, 60, 61};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.deer", types, (byte)1, skills, (short)10, (byte)0, (short)70, (short)50, (short)50, "sound.death.deer", "sound.death.deer", "sound.combat.hit.deer", "sound.combat.hit.deer", 1.0F, 1.0F, 1.0F, 0.5F, 1.0F, 0.0F, 1.5F, 30, new int[]{307, 306, 71, 140, 309, 308, 308, 310}, 5, 10, (byte)78);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(100);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(2.0F);
+    temp.setMaxGroupAttackSize(3);
+    temp.combatDamageType = 0;
+    temp.setMaxPercentOfCreatures(0.005F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)9);
+    }
+
+}
+
+private static void createFoalTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 10.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 2.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 12, 3, 43, 14, 9, 28, 32, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.foal", types, (byte)1, skills, (short)3, (byte)0, (short)100, (short)50, (short)50, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 100, new int[]{307, 140, 306, 71, 309, 308, 308}, 5, 0, (byte)79);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(100);
+    temp.setAdultFemaleTemplateId(64);
+    temp.setAdultMaleTemplateId(64);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(3.0F);
+    temp.setMaxGroupAttackSize(2);
+    temp.combatDamageType = 0;
+    temp.isHorse = true;
+    temp.setColourNames(new String[]{"grey", "brown", "gold", "black", "white", "piebald pinto", "blood bay", "ebony black", "skewbald pinto", "gold buckskin", "black silver", "appaloosa", "chestnut"});
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createHorseTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 40.0F);
+    skills.learnTemp(100, 7.0F);
+    skills.learnTemp(101, 7.0F);
+    skills.learnTemp(105, 22.0F);
+    skills.learnTemp(106, 5.0F);
+    skills.learnTemp(10052, 28.0F);
+    int[] types = new int[]{7, 12, 41, 43, 3, 14, 9, 28, 32};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.horse", types, (byte)1, skills, (short)3, (byte)0, (short)180, (short)50, (short)250, "sound.death.horse", "sound.death.horse", "sound.combat.hit.horse", "sound.combat.hit.horse", 1.0F, 1.0F, 2.5F, 1.5F, 2.0F, 0.0F, 1.5F, 100, new int[]{307, 306, 140, 71, 309, 308, 308}, 5, 0, (byte)79);
+    temp.setMaxAge(200);
+    temp.setChildTemplateId(65);
+    temp.setBaseCombatRating(6.0F);
+    temp.combatDamageType = 0;
+    temp.setAlignment(100.0F);
+    temp.setMaxGroupAttackSize(3);
+    temp.setHandDamString("kick");
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.isHorse = true;
+    temp.setMaxPercentOfCreatures(0.1F);
+    temp.setColourNames(new String[]{"grey", "brown", "gold", "black", "white", "piebald pinto", "blood bay", "ebony black", "skewbald pinto", "gold buckskin", "black silver", "appaloosa", "chestnut"});
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)4);
+    }
+
+}
+
+private static void createBisonTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 23.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 15.0F);
+    int[] types = new int[]{7, 3, 43, 14, 9, 28, 32, 49, 35, 15};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.bison", types, (byte)1, skills, (short)10, (byte)0, (short)180, (short)50, (short)250, "sound.death.bison", "sound.death.bison", "sound.combat.hit.bison", "sound.combat.hit.bison", 0.3F, 5.0F, 5.0F, 10.0F, 4.0F, 0.0F, 0.8F, 30, new int[]{307, 306, 140, 71, 309, 308, 308, 304, 304}, 5, 10, (byte)73);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(50);
+    temp.keepSex = false;
+    temp.setBaseCombatRating(4.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(3);
+    temp.setBonusCombatRating(14.0F);
+    temp.setMaxPercentOfCreatures(0.01F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)7);
+    }
+
+}
+
+private static void createBullTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 23.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 15.0F);
+    int[] types = new int[]{7, 41, 3, 43, 14, 9, 28, 32};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.bull", types, (byte)1, skills, (short)3, (byte)0, (short)180, (short)50, (short)250, "sound.death.cow.brown", "sound.death.cow.brown", "sound.combat.hit.cow.brown", "sound.combat.hit.cow.brown", 1.0F, 2.0F, 2.0F, 3.0F, 4.0F, 0.0F, 0.5F, 100, new int[]{307, 306, 140, 71, 309, 308, 308, 312, 312}, 5, 10, (byte)73);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(50);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(4.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(3);
+    temp.setMateTemplateId(3);
+    temp.setMaxPercentOfCreatures(0.02F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)5);
+    }
+
+}
+
+private static void createCalfTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 10.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 2.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 3, 14, 43, 9, 28, 32, 49, 35, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.calf", types, (byte)1, skills, (short)6, (byte)0, (short)100, (short)50, (short)100, "sound.death.cow.brown", "sound.death.cow.brown", "sound.combat.hit.cow.brown", "sound.combat.hit.cow.brown", 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 100, new int[]{307, 140, 306, 71, 309, 308, 308}, 5, 0, (byte)73);
+    temp.setHandDamString("kick");
+    temp.setMaxAge(100);
+    temp.setAdultFemaleTemplateId(3);
+    temp.setAdultMaleTemplateId(49);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(3.0F);
+    temp.setMaxGroupAttackSize(2);
+    temp.setCombatDamageType((byte)0);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createBrownCowTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 8.0F);
+    int[] types = new int[]{7, 41, 3, 43, 14, 15, 9, 28, 32, 49, 35};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.cow", types, (byte)1, skills, (short)3, (byte)1, (short)180, (short)50, (short)250, "sound.death.cow.brown", "sound.death.cow.brown", "sound.combat.hit.cow.brown", "sound.combat.hit.cow.brown", 1.0F, 1.0F, 1.0F, 0.0F, 2.0F, 0.0F, 0.5F, 100, new int[]{307, 306, 140, 71, 309, 308, 308}, 5, 0, (byte)73);
+    temp.keepSex = true;
+    temp.setMaxAge(100);
+    temp.setBaseCombatRating(1.0F);
+    temp.setChildTemplateId(50);
+    temp.setMateTemplateId(49);
+    temp.setMaxGroupAttackSize(2);
+    temp.combatDamageType = 0;
+    temp.setMaxPercentOfCreatures(0.02F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)4);
+    }
+
+}
+
+private static void createLambTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 7.0F);
+    skills.learnTemp(104, 7.0F);
+    skills.learnTemp(103, 7.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 2.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 3, 43, 14, 54, 9, 28, 32, 49, 35, 63};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.lamb", types, (byte)1, skills, (short)3, (byte)0, (short)50, (short)30, (short)30, "sound.death.deer", "sound.death.deer", "sound.combat.hit.deer", "sound.combat.hit.deer", 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.5F, 100, new int[]{140, 309, 308, 308}, 5, 0, (byte)83);
+    temp.setMaxAge(100);
+    temp.setAdultFemaleTemplateId(96);
+    temp.setAdultMaleTemplateId(102);
+    temp.combatDamageType = 0;
+    temp.setBaseCombatRating(1.0F);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)3);
+    }
+
+}
+
+private static void createSheepTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 17.0F);
+    skills.learnTemp(104, 17.0F);
+    skills.learnTemp(103, 25.0F);
+    skills.learnTemp(100, 5.0F);
+    skills.learnTemp(101, 4.0F);
+    skills.learnTemp(105, 10.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 8.0F);
+    int[] types = new int[]{7, 3, 43, 14, 54, 15, 9, 28, 32, 49, 35, 52};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.sheep", types, (byte)1, skills, (short)3, (byte)1, (short)50, (short)50, (short)30, "sound.death.deer", "sound.death.deer", "sound.combat.hit.deer", "sound.combat.hit.deer", 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.5F, 100, new int[]{140, 309, 308, 308}, 5, 0, (byte)83);
+    temp.setMaxAge(100);
+    temp.keepSex = true;
+    temp.setChildTemplateId(101);
+    temp.setMateTemplateId(102);
+    temp.setBaseCombatRating(1.0F);
+    temp.setMaxGroupAttackSize(2);
+    temp.combatDamageType = 0;
+    temp.setMaxPercentOfCreatures(0.03F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)5);
+    }
+
+}
+
+private static void createRamTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 23.0F);
+    skills.learnTemp(104, 18.0F);
+    skills.learnTemp(103, 35.0F);
+    skills.learnTemp(100, 6.0F);
+    skills.learnTemp(101, 6.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 3.0F);
+    skills.learnTemp(10052, 22.0F);
+    int[] types = new int[]{7, 3, 43, 14, 54, 9, 28, 32, 49, 35, 52};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.sheep", types, (byte)1, skills, (short)3, (byte)0, (short)50, (short)50, (short)30, "sound.death.deer", "sound.death.deer", "sound.combat.hit.deer", "sound.combat.hit.deer", 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.5F, 100, new int[]{140, 309, 308, 308, 304, 304}, 5, 7, (byte)83);
+    temp.setHandDamString("headbutt");
+    temp.setMaxAge(100);
+    temp.setChildTemplateId(101);
+    temp.setMateTemplateId(96);
+    temp.keepSex = true;
+    temp.setBaseCombatRating(5.0F);
+    temp.setMaxGroupAttackSize(3);
+    temp.combatDamageType = 0;
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setMaxPercentOfCreatures(0.05F);
+    if (Feature.CREATURE_MOVEMENT_CHANGES.isEnabled()) {
+        temp.setVision((short)5);
+    }
+
+}
+
+private static void createKidTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 10.0F);
+    skills.learnTemp(104, 10.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 3.0F);
+    skills.learnTemp(101, 2.0F);
+    skills.learnTemp(105, 5.0F);
+    skills.learnTemp(106, 1.0F);
+    skills.learnTemp(10052, 5.0F);
+    int[] types = new int[]{7, 14, 27, 32, 45};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.child", types, (byte)0, skills, (short)5, (byte)0, (short)100, (short)30, (short)20, "sound.death.male.child", "sound.death.female.child", "sound.combat.hit.male.child", "sound.combat.hit.female.child", 1.0F, 2.0F, 0.0F, 3.0F, 2.0F, 0.0F, 1.0F, 100, new int[0], 25, 10, (byte)80);
+    temp.setMaxAge(10);
+    temp.setAdultFemaleTemplateId(1);
+    temp.setAdultMaleTemplateId(1);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_NONE);
+    temp.setBaseCombatRating(3.0F);
+    temp.combatDamageType = 0;
+    temp.hasHands = true;
+}
+
+private static void createHumanTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    float num = Servers.localServer.getSkillbasicval();
+    skills.learn(1, num);
+    skills.learn(3, num);
+    skills.learn(2, num);
+    skills.learn(102, num);
+    skills.learn(104, Servers.localServer.getSkillbcval());
+    skills.learn(103, num);
+    skills.learn(100, Servers.localServer.getSkillmindval());
+    skills.learn(101, num);
+    skills.learn(105, num);
+    skills.learn(106, num);
+    skills.learn(1023, Servers.localServer.getSkillfightval());
+    int[] types = new int[]{1, 12, 13, 17, 45, 7};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.player", types, (byte)0, skills, (short)80, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0, new int[0], 25, 100, (byte)80);
+    temp.setBaseCombatRating(4.0F);
+    temp.setChildTemplateId(66);
+    temp.setMaxGroupAttackSize(7);
+    temp.setAdultFemaleTemplateId(1);
+    temp.setAdultMaleTemplateId(1);
+    temp.hasHands = true;
+}
+
+private static void createRiftTemplateOne(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 35.0F);
+    skills.learnTemp(103, 25.0F);
+    skills.learnTemp(100, 8.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 2.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 13, 3, 29, 6, 12};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.quadraped.beast.rift", types, (byte)3, skills, (short)8, (byte)0, (short)40, (short)20, (short)100, "sound.death.dog", "sound.death.dog", "sound.combat.hit.dog", "sound.combat.hit.dog", 0.3F, 12.0F, 0.0F, 14.0F, 15.0F, 0.0F, 1.6F, 300, new int[]{636}, 10, 90, (byte)74);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CLOTH);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(8);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createRiftTemplateTwo(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 12.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 12.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.jackal.rift", types, (byte)0, skills, (short)8, (byte)0, (short)150, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.2F, 15.0F, 6.0F, 10.0F, 0.0F, 0.0F, 1.4F, 700, new int[]{636}, 10, 80, (byte)81);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_CHAIN);
+    temp.setBaseCombatRating(19.0F);
+    temp.combatDamageType = 2;
+    temp.setMaxGroupAttackSize(6);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createRiftTemplateThree(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 12.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 12.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.ogre.rift", types, (byte)0, skills, (short)8, (byte)0, (short)450, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.1F, 20.0F, 10.0F, 10.0F, 0.0F, 0.0F, 1.4F, 700, new int[]{636}, 10, 84, (byte)81);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(19.0F);
+    temp.combatDamageType = 0;
+    temp.setMaxGroupAttackSize(8);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createRiftTemplateFour(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 25.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 12.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 12.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.warmaster.rift", types, (byte)0, skills, (short)8, (byte)0, (short)450, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.03F, 32.0F, 20.0F, 40.0F, 0.0F, 0.0F, 1.6F, 700, new int[]{636}, 20, 94, (byte)74);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_PLATE);
+    temp.setBaseCombatRating(19.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(20);
+    temp.setMaxPercentOfCreatures(0.01F);
+}
+
+private static void createRiftCasterTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 32.0F);
+    skills.learnTemp(101, 34.0F);
+    skills.learnTemp(105, 20.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10052, 40.0F);
+    skills.learnTemp(10067, 50.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.jackal.rift.caster", types, (byte)0, skills, (short)8, (byte)0, (short)150, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.2F, 15.0F, 6.0F, 10.0F, 0.0F, 0.0F, 1.4F, 700, new int[]{636}, 10, 90, (byte)74);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-20.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(14.0F);
+    temp.combatDamageType = 4;
+    temp.setMaxGroupAttackSize(6);
+    temp.setMaxPercentOfCreatures(0.001F);
+}
+
+private static void createRiftOgreMageTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 20.0F);
+    skills.learnTemp(104, 20.0F);
+    skills.learnTemp(103, 20.0F);
+    skills.learnTemp(100, 42.0F);
+    skills.learnTemp(101, 44.0F);
+    skills.learnTemp(105, 30.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10052, 50.0F);
+    skills.learnTemp(10067, 50.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.ogre.rift.mage", types, (byte)0, skills, (short)8, (byte)0, (short)350, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.1F, 20.0F, 10.0F, 10.0F, 0.0F, 0.0F, 1.4F, 700, new int[]{636}, 10, 90, (byte)81);
+    temp.setHandDamString("burn");
+    temp.setAlignment(-50.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON);
+    temp.setBaseCombatRating(19.0F);
+    temp.combatDamageType = 9;
+    temp.setMaxGroupAttackSize(8);
+    temp.setMaxPercentOfCreatures(0.001F);
+}
+
+private static void createRiftSummonerTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 40.0F);
+    skills.learnTemp(104, 25.0F);
+    skills.learnTemp(103, 30.0F);
+    skills.learnTemp(100, 18.0F);
+    skills.learnTemp(101, 14.0F);
+    skills.learnTemp(105, 40.0F);
+    skills.learnTemp(106, 15.0F);
+    skills.learnTemp(10052, 45.0F);
+    skills.learnTemp(10067, 60.0F);
+    int[] types = new int[]{7, 6, 13, 16, 40, 29, 30, 34, 39, 45, 55, 18, 12};
+    int biteDamage = true;
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.jackal.rift.summoner", types, (byte)0, skills, (short)8, (byte)0, (short)150, (short)100, (short)150, "sound.death.troll", "sound.death.troll", "sound.combat.hit.troll", "sound.combat.hit.troll", 0.2F, 15.0F, 6.0F, 10.0F, 0.0F, 0.0F, 1.4F, 700, new int[]{636}, 10, 70, (byte)74);
+    temp.setHandDamString("claw");
+    temp.setAlignment(-30.0F);
+    temp.setMaxAge(50);
+    temp.setArmourType(ArmourTemplate.ARMOUR_TYPE_STUDDED);
+    temp.setBaseCombatRating(12.0F);
+    temp.combatDamageType = 1;
+    temp.setMaxGroupAttackSize(6);
+    temp.setMaxPercentOfCreatures(0.001F);
+}
+
+private static void createNpcHumanTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    skills.learnTemp(102, 15.0F);
+    skills.learnTemp(104, 15.0F);
+    skills.learnTemp(103, 10.0F);
+    skills.learnTemp(100, 10.0F);
+    skills.learnTemp(101, 10.0F);
+    skills.learnTemp(105, 99.0F);
+    skills.learnTemp(106, 24.0F);
+    skills.learnTemp(10052, 40.0F);
+    int[] types = new int[]{0, 4, 17};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.humanoid.human.player", types, (byte)0, skills, (short)5, (byte)0, (short)180, (short)20, (short)35, "sound.death.male", "sound.death.female", "sound.combat.hit.male", "sound.combat.hit.female", 1.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0, new int[0], 3, 0, (byte)80);
+    temp.setBaseCombatRating(99.0F);
+    temp.setMaxGroupAttackSize(4);
+    temp.combatDamageType = 1;
+    temp.hasHands = true;
+}
+
+private static void createFishTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {
+    int[] types = new int[]{4, 38, 37};
+    CreatureTemplate temp = CreatureTemplateFactory.getInstance().createCreatureTemplate(id, name, plural, longDesc, "model.creature.fish", types, (byte)9, skills, (short)3, (byte)0, (short)10, (short)10, (short)100, "sound.death.snake", "sound.death.snake", "sound.combat.hit.snake", "sound.combat.hit.snake", 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 100, new int[0], 40, 59, (byte)85);
+    temp.offZ = -1.4F;
+    temp.setCreatureAI(new FishAI());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The names and descriptions:
+
+createCreatureTemplate(1, "Human", "Humans", "Another explorer.");
+createCreatureTemplate(9, "Salesman", "Salesman", "An envoy from the king, buying and selling items.");
+createCreatureTemplate(3, "Brown cow", "Brown cows", "A brown docile cow.");
+createCreatureTemplate(7, "guardTough", "guardToughs", "This warrior would pose problems for any intruder.");
+createCreatureTemplate(8, "guardBrutal", "guardBrutals", "Not many people would like to cross this warrior.");
+createCreatureTemplate(10, "Black wolf", "Black wolves", "This dark shadow of the forests glares hungrily at you.");
+createCreatureTemplate(11, "Troll", "Trolls", "A dark green stinking troll. Always hungry. Always deadly.");
+createCreatureTemplate(12, "Brown bear", "Brown bears", "The brown bear has a distinctive hump on the shoulders, and long deadly claws on the front paws.");
+createCreatureTemplate(42, "Black bear", "Black bears", "The black bear looks pretty kind, but has strong, highly curved claws ready to render you to pieces.");
+createCreatureTemplate(13, "Large rat", "Large rats", "This is an unnaturally large version of a standard black rat.");
+createCreatureTemplate(43, "Cave bug", "Cave bugs", "Some kind of unnaturally large and deformed insect lunges at you from the dark. It has a grey carapace, with small patches of lichen growing here and there.");
+createCreatureTemplate(14, "Mountain lion", "Mountain lions", "Looking like a huge cat, it is tawny-coloured, with a small head and small, rounded, black-tipped ears.");
+createCreatureTemplate(15, "Wild cat", "Wild cats", "A small wild cat, fierce and aggressive.");
+createCreatureTemplate(2, "Joe the Stupe", "Joe the Stupes", "A hollow-eyed person is standing here, potentially dangerous but stupid as ever.");
+createCreatureTemplate(16, "Red dragon", "Red dragons", "The menacing huge dragon, with scales in every possible red color.");
+createCreatureTemplate(17, "Green dragon hatchling", "Green dragon hatchlings", "The green dragon hatchling is not as large as a full-grown dragon and unable to fly.");
+createCreatureTemplate(18, "Black dragon hatchling", "Black dragon hatchlings", "The black dragon hatchling is not as large as a full-grown dragon and unable to fly.");
+createCreatureTemplate(19, "White dragon hatchling", "White dragon hatchlings", "The white dragon hatchling is not as large as a full-grown dragon and unable to fly.");
+createCreatureTemplate(20, "Forest giant", "Forest giants", "With an almost sad look upon its face, this filthy giant might be mistaken for a harmless huge baby.");
+createCreatureTemplate(21, "Unicorn", "Unicorns", "A bright white unicorn with a slender twisted horn.");
+createCreatureTemplate(118, "Unicorn Foal", "Unicorn Foals", "A small bright white unicorn foal with a budding horn.");
+createCreatureTemplate(22, "Kyklops", "Kyklops", "This large drooling one-eyed giant is obviously too stupid to feel any mercy.");
+createCreatureTemplate(23, "Goblin", "Goblins", "This small, dirty creature looks at you greedily, and would go into a frenzy if you show pain.");
+createCreatureTemplate(25, "Huge spider", "Huge spiders", "Monstrously huge and fast, these spiders love to be played with.");
+createCreatureTemplate(56, "Lava spider", "Lava spiders", "Lava spiders usually lurk in their lava pools, catching curious prey.");
+createCreatureTemplate(26, "Goblin leader", "Goblin leaders", "Always on the brink of cackling wildly, this creature is possibly insane.");
+createCreatureTemplate(27, "Troll king", "Troll kings", "This troll has a scary clever look in his eyes. He surely knows what he is doing.");
+createCreatureTemplate(28, "Spirit guard", "Spirit guards", "This fierce spirit vaguely resembles a human warrior, and for some reason guards here.");
+createCreatureTemplate(29, "Spirit sentry", "Spirit sentries", "This spirit vaguely resembles a human being, and for some reason guards here.");
+createCreatureTemplate(30, "Spirit avenger", "Spirit avengers", "This restless spirit vaguely resembles a human being, that for some reason has chosen to guard this place.");
+createCreatureTemplate(31, "Spirit brute", "Spirit brutes", "This fierce spirit seems restless and upset but for some reason has chosen to guard this place.");
+createCreatureTemplate(32, "Spirit templar", "Spirit templars", "The spirit of a proud knight has decided to protect this place.");
+createCreatureTemplate(33, "Spirit shadow", "Spirit shadows", "A dark humanoid shadow looms about, its intentions unclear.");
+createCreatureTemplate(34, "Jenn-Kellon tower guard", "Jenn-Kellon tower guards", "This person seems to be able to put up some resistance. These guards will help defend you if you say help.");
+createCreatureTemplate(35, "Horde of the Summoned tower guard", "Horde of the Summoned tower guards", "This person seems to be able to put up some resistance. These guards will help defend you if you say help.");
+createCreatureTemplate(36, "Mol-Rehan tower guard", "Mol-Rehan tower guards", "This person seems to be able to put up some resistance. These guards will help defend you if you say help.");
+createCreatureTemplate(67, "Isles tower guard", "Isles tower guards", "This person seems to be able to put up some resistance. These guards will help defend you if you say help.");
+createCreatureTemplate(41, "Bartender", "Bartenders", "A fat and jolly bartender, eager to help people settling in.");
+createCreatureTemplate(46, "Santa Claus", "Santa Clauses", "Santa Claus is standing here, with a jolly face behind his huge white beard.");
+createCreatureTemplate(47, "Evil Santa", "Evil Santas", "Some sort of Santa Claus is standing here, with a fat belly, yellow eyes, and a bad breath.");
+createCreatureTemplate(37, "Wild boar", "Wild boars", "A large and strong boar is grunting here.");
+createCreatureTemplate(39, "Mountain gorilla", "Mountain gorillas", "This normally calm mountain gorilla may suddenly become a very fierce and dangerous foe if annoyed.");
+createCreatureTemplate(38, "Anaconda", "Anacondas", "An over 3 meters long muscle, this grey-green snake is formidable.");
+createCreatureTemplate(40, "Rabid hyena", "Rabid hyenas", "Normally this doglike creature would act very cowardly, but some sickness seems to have driven it mad and overly aggressive.");
+createCreatureTemplate(44, "Pig", "Pigs", "A pig is here, wallowing in the mud.");
+createCreatureTemplate(45, "Hen", "Hens", "A fine hen proudly prods around here.");
+createCreatureTemplate(52, "Rooster", "Roosters", "A proud rooster struts around here.");
+createCreatureTemplate(48, "Chicken", "Chickens", "A cute chicken struts around here.");
+createCreatureTemplate(51, "Dog", "Dogs", "Occasionally this dog will bark and scratch itself behind the ears.");
+createCreatureTemplate(50, "Calf", "Calves", "This calf looks happy and free.");
+createCreatureTemplate(49, "Bull", "Bulls", "This bull looks pretty menacing.");
+createCreatureTemplate(82, "Bison", "Bison", "The bison are impressive creatures when moving in hordes.");
+createCreatureTemplate(64, "Horse", "Horses", "Horses like this one have many uses.");
+createCreatureTemplate(65, "Foal", "Foals", "A foal skips around here merrily.");
+createCreatureTemplate(53, "Easter bunny", "Easter bunnies", "Wow, the mystical easter bunny skips around here joyfully!");
+createCreatureTemplate(54, "Deer", "Deer", "A fallow deer is here, watching for enemies.");
+createCreatureTemplate(55, "Pheasant", "Pheasants", "The pheasant slowly paces here, vigilant as always.");
+createCreatureTemplate(57, "Lava fiend", "Lava fiends", "These lava creatures enter the surface through lava pools, probably in order to hunt. Or burn.");
+createCreatureTemplate(58, "Crocodile", "Crocodiles", "This meat-eating reptile swims very well but may also perform quick rushes on land in order to catch you.");
+createCreatureTemplate(59, "Scorpion", "Scorpions", "The monstruously large type of scorpion found in woods and caves here is fairly aggressive.");
+createCreatureTemplate(60, "Tormentor", "Tormentors", "A particularly grim person stands here, trying to sort things out.");
+createCreatureTemplate(61, "Guide", "Guides", "A rather stressed out person is here giving instructions on how to survive to everyone who just arrived.");
+createCreatureTemplate(62, "Lady of the lake", "Ladies of the lake", "The hazy shape of a female spirit lingers below the waves.");
+createCreatureTemplate(63, "Cobra King", "Cobra Kings", "A huge menacing king cobra is guarding here, head swaying back and forth.");
+createCreatureTemplate(66, "Child", "Children", "A small child is here, exploring the world.");
+createCreatureTemplate(68, "Avenger of the Light", "Avengers of the Light", "Some kind of giant lumbers here, hunting humans.");
+createCreatureTemplate(69, "Zombie", "Zombies", "A very bleak humanlike creature stands here, looking abscent-minded.");
+createCreatureTemplate(70, "Sea Serpent", "Sea Serpents", "Sea Serpents are said to sleep in the dark caves of the abyss for years, then head to the surface to hunt once they get hungry.");
+createCreatureTemplate(71, "Huge shark", "Huge sharks", "These huge sharks were apparently not just a rumour. How horrendous!");
+createCreatureTemplate(72, "Sol Demon", "Sol Demons", "This demon has been released from Sol.");
+createCreatureTemplate(73, "Deathcrawler minion", "Deathcrawler minions", "The Deathcrawler minions usually spawn in large numbers. They have deadly poisonous bites.");
+createCreatureTemplate(74, "Spawn of Uttacha", "Spawns of Uttacha", "Uttacha is a vengeful demigod who lives in the depths of an ocean on Valrei. These huge larvae are hungry and confused abominations here.");
+createCreatureTemplate(75, "Son of Nogump", "Sons of Nogump", "Nogump the dirty has given birth to this foul two-headed giant wielding a huge twohanded sword.");
+createCreatureTemplate(76, "Drakespirit", "Drakespirits", "Drakespirits are usually found in their gardens on Valrei. They are hungry and aggressive.");
+createCreatureTemplate(77, "Eaglespirit", "Eaglespirits", "The Eaglespirits live on a glacier on Valrei. They will attack if hungry or threatened.");
+createCreatureTemplate(78, "Epiphany of Vynora", "Epiphanies of Vynora", "This female creature is almost see-through, and you wonder if she is made of water or thoughts alone.");
+createCreatureTemplate(79, "Juggernaut of Magranon", "Juggernauts of Magranon", "A ferocious beast indeed, the juggernaut can crush mountains with its horned forehead.");
+createCreatureTemplate(80, "Manifestation of Fo", "Manifestations of Fo", "Something seems to have gone wrong as Fo tried to create his manifestation. The thorns are not loving at all and it seems very aggressive.");
+createCreatureTemplate(81, "Incarnation of Libila", "Incarnations of Libila", "This terrifying female apparition has something disturbing over it. As if it's just one facet of Libila.");
+createCreatureTemplate(83, "Hell Horse", "Hell Horses", "This fiery creature is rumoured to be the mounts of the demons of Sol.");
+createCreatureTemplate(117, "Hell Foal", "Hell Foals", "This fiery creature is rumoured to grow up to be a mount of the demons of Sol.");
+createCreatureTemplate(84, "Hell Hound", "Hell Hounds", "The hell hound is said to be spies and assassins for the demons of Sol.");
+createCreatureTemplate(85, "Hell Scorpious", "Hell Scorpii", "The pets of the demons of Sol are very playful.");
+createCreatureTemplate(86, "Worg", "Worgs", "This wolf-like creature is unnaturally big and clumsy. The Worg seems finicky and nervous, which makes it unpredictable and dangerous to deal with.");
+createCreatureTemplate(87, "Skeleton", "Skeletons", "This abomination has been animated by powerful magic.");
+createCreatureTemplate(88, "Wraith", "Wraiths", "The wraith is born of darkness and shuns the daylight.");
+createCreatureTemplate(93, "Seal", "Seals", "These creatures love to bathe in the sun and go for a swim hunting fish.");
+createCreatureTemplate(94, "Tortoise", "Tortoises", "The tortoise is pretty harmless but can pinch you quite bad with its bite.");
+createCreatureTemplate(95, "Crab", "Crabs", "Crabs are known to hide well and walk sideways.");
+createCreatureTemplate(96, "Sheep", "Sheep", "A mythical beast of legends, it stares back at you with blood filled eyes and froth around the mouth.");
+createCreatureTemplate(97, "Blue whale", "Blue whales", "These gigantic creatures travel huge distances looking for food, while singing their mysterious songs.");
+createCreatureTemplate(98, "Seal cub", "Seal cubs", "A young seal, waiting to be fed luscious fish.");
+createCreatureTemplate(99, "Dolphin", "Dolphins", "A playful dolphin. They have been known to defend sailors in distress from their natural enemy, the shark.");
+createCreatureTemplate(100, "Octopus", "Octopi", "Larger specimen have been known to pull whole ships down into the abyss. Luckily this one is small.");
+createCreatureTemplate(101, "Lamb", "Lambs", "A small cuddly ball of fluff.");
+createCreatureTemplate(102, "Ram", "Rams", "A mythical beast of legends, it stares back at you with blood filled eyes and froth around the mouth.");
+createCreatureTemplate(89, "Black dragon", "Black dragons", "The menacing huge dragon, with scales as dark as the night.");
+createCreatureTemplate(91, "Blue dragon", "Blue dragons", "The menacing huge dragon, with dark blue scales.");
+createCreatureTemplate(90, "Green dragon", "Green dragons", "The menacing huge dragon, with emerald green scales.");
+createCreatureTemplate(92, "White dragon", "White dragons", "The menacing huge dragon, with snow white scales.");
+createCreatureTemplate(104, "Blue dragon hatchling", "Blue dragon hatchlings", "The blue dragon hatchling is not as large as a full-grown dragon and unable to fly.");
+createCreatureTemplate(103, "Red dragon hatchling", "Red dragon hatchlings", "The red dragon hatchling is not as large as a full-grown dragon and unable to fly.");
+createCreatureTemplate(105, "Fog Spider", "Fog Spiders", "Usually only encountered under foggy conditions, this creature is often considered an Omen.");
+createCreatureTemplate(106, "Rift Beast", "Rift Beasts", "These vile creatures emerge from the rift in great numbers.");
+createCreatureTemplate(107, "Rift Jackal", "Rift Jackals", "The Jackals accompany the Beasts as they spew out of the rift.");
+createCreatureTemplate(108, "Rift Ogre", "Rift Ogres", "The Rift Ogres seem to bully Beasts and Jackals into following orders.");
+createCreatureTemplate(109, "Rift Warmaster", "Rift Warmasters", "These plan and lead attacks from the rift.");
+createCreatureTemplate(111, "Rift Ogre Mage", "Rift Ogre Magi", "Ogre Mages have mysterious powers.");
+createCreatureTemplate(110, "Rift Caster", "Rift Casters", "Proficient spell casters, but they seem to avoid direct contact.");
+createCreatureTemplate(112, "Rift Summoner", "Rift Summoners", "Summoners seem to be able to call for aid from the Rift.");
+createCreatureTemplate(113, "NPC Human", "NPC Humans", "A relatively normal person stands here waiting for something to happen.");
+if (Feature.WAGONER.isEnabled()) {
+createCreatureTemplate(114, "NPC Wagoner", "NPC Wagoners", "A relatively normal person stands here waiting to help transport bulk goods.");
+createCreatureTemplate(115, "Wagon Creature", "Wagon Creatures", "The wagon creature is only used for hauling a wagoner's wagon.");
+}
+
+if (Servers.localServer.testServer) {
+createCreatureTemplate(116, "Weapon Test Dummy", "Weapon Test Dummies", "An immortal that shouts out any damage that it receives, then immediately heals.");
+}
+
+createCreatureTemplate(119, "Fish", "fishs", "a fish of some type or other.");
