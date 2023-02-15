@@ -112,7 +112,7 @@ moveRate ***int***
 
 naturalArmour ***float***
 
-offZ ***float*** : The height offset of the creture while on water.
+offZ ***float*** : ~~The height offset of the creture while on water.~~ It doesn't seem to work idk 
 
 paintMode ***int***
 
