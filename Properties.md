@@ -107,7 +107,9 @@ maxPercentOfCreatures ***float***
 
 maxPopulationOfCreatures ***int***
 
-meatMaterial ***byte***
+meatMaterial ***byte*** : The material type for the meat. For the ids see MeatMaterials.txt or
+[on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/MeatMaterials.txt)
+<br>Example: cret.meatMaterial = 80
 
 moveRate ***int***
 
