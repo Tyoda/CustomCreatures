@@ -1,0 +1,10 @@
+ArmourTemplate.ARMOUR_TYPE_LEATHER : 1
+ArmourTemplate.ARMOUR_TYPE_STUDDED : 2
+ArmourTemplate.ARMOUR_TYPE_CHAIN   : 3
+ArmourTemplate.ARMOUR_TYPE_PLATE   : 4
+ArmourTemplate.ARMOUR_TYPE_RING    : 5
+ArmourTemplate.ARMOUR_TYPE_CLOTH   : 6
+ArmourTemplate.ARMOUR_TYPE_SCALE   : 7
+ArmourTemplate.ARMOUR_TYPE_SPLINT  : 8
+ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON : 9
+ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON   : 10

@@ -31,7 +31,8 @@ aggressive ***int***
 
 alignment ***float***
 
-armourType ***int***
+armourType ***int*** : For the armour type ID see ArmourTypes.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/ArmourTypes.txt)
+<br>Example: cret.armourType = 2
 
 baseCombatRating ***float***
 
