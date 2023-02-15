@@ -1,0 +1,10 @@
+BodyHuman   : 0
+BodyHorse   : 1
+BodyBear    : 2
+BodyDog     : 3
+BodyEttin   : 4
+BodyCyclops : 5
+BodyDragon  : 6
+BodyBird    : 7
+BodySpider  : 8
+BodySnake   : 9

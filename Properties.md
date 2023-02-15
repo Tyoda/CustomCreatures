@@ -40,7 +40,8 @@ biteResistance ***float***
 
 biteVulnerability ***float***
 
-bodyType ***byte***
+bodyType ***byte*** : For the body type ID see BodyTypes.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/BodyTypes.txt)
+<br>Example: cret.bodyType = 5
 
 bonusCombatRating ***int***
 
