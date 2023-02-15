@@ -2,17 +2,17 @@
 ## About
 The properties below can be applied to any custom creature.
 For an example property `exampleProperty` the next line is how it's applied
-to the custom creature `cret`:
-<br>cret.exampleProperty = value
-The value can be whatever is defined as the type. The types and their possible values are (unless otherwise specified):
+to the custom creature `cret`:<br>
+cret.exampleProperty = value
+<br>The value can be whatever is defined as the type. The types and their possible values are (unless otherwise specified):
 <br>`string   : any string`
 <br>`float    : 1.0 | 1.5 | 1 | -5 | [...]`
 <br>`int      : 1 | -5 | [...]`
 <br>`byte     : 0 | 160 | [-128-127]`
 <br>`intArray : 0; 1; 2; 3; 4; 5 | 7 | [...]`
 
-Note that whenever an input needs several values it **must be** delimited by a `;`.
-Even if I make amistake and use `,` in an example. 
+Note that whenever an input needs several values it **must be** separated by a `;`.
+Even if I make a mistake and use `,` in an example. 
 
 
 ## Properties
@@ -171,7 +171,7 @@ sizeModifier ***(int, int, int)*** : Modifier to the size of the creature.
 
 onFire ***(bool, byte)*** : onFire, fireRadius
 
-hitSounds ***(string, string)*** : Hit sound male and female.
+hitSounds ***(string, string)*** : Hit sound male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
 <br>Example: cret.hitSounds = sound.combat.hit.cat; sound.combat.hit.cat
 
 dimension ***(short, short, short)*** : The effective size of the creature
@@ -180,7 +180,7 @@ Height determines how far the creature is visible from
 (401 makes it visible as far as possible). 
 <br>Example: cret.dimension = 40; 500; 100
 
-deathSounds ***(string, string)*** : The death sounds. Male and female.
+deathSounds ***(string, string)*** : The death sounds. Male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
 <br>Example: cret.deathSounds = sound.death.dragon; sound.death.dragon
 
 damages ***(float, float, float, float, float)*** : Hand, kick, bite,
