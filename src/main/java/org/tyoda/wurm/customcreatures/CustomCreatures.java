@@ -1,5 +1,8 @@
 package org.tyoda.wurm.customcreatures;
 
+import javassist.*;
+import org.gotti.wurmunlimited.modloader.classhooks.HookException;
+import org.gotti.wurmunlimited.modloader.classhooks.HookManager;
 import org.gotti.wurmunlimited.modloader.interfaces.*;
 import org.gotti.wurmunlimited.modsupport.creatures.ModCreatures;
 
@@ -8,7 +11,7 @@ import java.util.logging.Logger;
 
 public class CustomCreatures implements WurmServerMod, Versioned, Configurable, Initable, PreInitable {
     public static final Logger logger = Logger.getLogger(CustomCreatures.class.getName());
-    public static final String version = "0.1";
+    public static final String version = "0.2";
 
     public static final String delimiter = ";";
 
@@ -21,7 +24,20 @@ public class CustomCreatures implements WurmServerMod, Versioned, Configurable, 
 
     @Override
     public void preInit() {
-        ModCreatures.init();
+        try {
+            ModCreatures.init();
+            ClassPool classPool = HookManager.getInstance().getClassPool();
+            CtClass ctCreatureTemplate = classPool.get("com.wurmonline.server.creatures.CreatureTemplate");
+            // remove all non-static final modifiers
+            logger.info("Removing final modifiers.");
+            for (CtField field : ctCreatureTemplate.getFields()) {
+                if(Modifier.isFinal(field.getModifiers()) && !Modifier.isStatic(field.getModifiers())) {
+                    field.setModifiers(Modifier.clear(field.getModifiers(), Modifier.FINAL));
+                }
+            }
+        } catch (NotFoundException e){
+            throw new HookException(e);
+        }
     }
 
     @Override

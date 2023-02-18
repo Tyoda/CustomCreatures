@@ -5,6 +5,9 @@ createCreatureTemplate(int id, String name, String plural, String longDesc, Stri
 
 
 
+NOTE THAT YOU SHOULD NEVER DIRECTLY COPY ANYTHING FROM HERE. THESE ARE ONLY MEANT TO BE STUDIED FOR WHAT VALUES YOU MIGHT WANT TO USE IN YOUR OWN CREATURE. IT IS NOT THE WAY YOU CREATE YOUR OWN IN THE .config FILE.
+
+
 And now all the creature templates. You can search with CTRL+F for "bear" for example to see what values that uses.
 
 private static void createHellScorpionTemplate(int id, String name, String plural, String longDesc, Skills skills) throws IOException {

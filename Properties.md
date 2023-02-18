@@ -8,6 +8,7 @@ cret.exampleProperty = value
 <br>`string   : any string`
 <br>`float    : 1.0 | 1.5 | 1 | -5 | [...]`
 <br>`int      : 1 | -5 | [...]`
+<br>`short    : 1 | -5 | [-32768-32767]`
 <br>`byte     : 0 | 160 | [-128-127]`
 <br>`intArray : 0; 1; 2; 3; 4; 5 | 7 | [...]`
 
@@ -18,6 +19,12 @@ Even if I make a mistake and use `,` in an example.
 ## Properties
 
 ### Basic properties
+name ***string*** : The name of the creature.
+<br>Example: cret.name = thunder rat
+
+plural ***string*** : The plural name.
+<br>Example: cret.plural = thunder rats
+
 modelName ***string*** : The model's name. See the mappings.txt from your graphics.jar or
 [here on GitHub](https://github.com/Tyoda/CustomCreatures/blob/master/include/mappings.txt).
 Modded models also work.
@@ -27,7 +34,8 @@ acidVulnerability ***float***
 
 acidResistance ***float***
 
-aggressive ***int***
+aggressivity ***int*** : The range at which it aggros.
+<br>Example: cret.aggressivity = 45
 
 alignment ***float***
 
@@ -36,6 +44,8 @@ armourType ***int*** : For the armour type ID see ArmourTypes.txt or [on github]
 
 baseCombatRating ***float***
 
+bonusCombatRating ***int***
+
 biteResistance ***float***
 
 biteVulnerability ***float***
@@ -43,15 +53,14 @@ biteVulnerability ***float***
 bodyType ***byte*** : For the body type ID see BodyTypes.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/BodyTypes.txt)
 <br>Example: cret.bodyType = 5
 
-bonusCombatRating ***int***
-
-childTemplate ***int***
+childTemplateId ***int***
 
 coldResistance ***float***
 
 coldVulnerability ***float***
 
-combatDamageType ***byte***
+combatDamageType ***byte*** : Type of damage it does
+<br>Example: cret.combatDamageType = 4
 
 crushResistance ***float***
 
@@ -59,9 +68,10 @@ crushVulnerability ***float***
 
 daysOfPregnancy ***byte***
 
-denMaterial ***byte***
-
 denName ***string***
+
+denMaterial ***byte*** : See Materials.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/Materials.txt)
+<br>Example: cret.denMaterial = 89
 
 description ***string***
 
@@ -69,7 +79,15 @@ diseaseResistance ***float***
 
 diseaseVulnerability ***float***
 
-eggLayer ***int***
+eggLayer ***boolean***
+
+eggTemplateId ***int***
+
+mateTemplateId ***int***
+
+adultFemaleTemplateId ***int***
+
+adultMaleTemplateId ***int***
 
 fireResistance ***float***
 
@@ -77,11 +95,8 @@ fireVulnerability ***float***
 
 glowing ***bool***
 
-handDamString ***string***
-
-hasHands ***bool***
-
-headbuttDamString ***string***
+hasHands ***bool*** : whether it is a human/monster with hands like goblin/troll
+<br>Example: cret.hasHands = true
 
 internalResistance ***float***
 
@@ -89,20 +104,21 @@ internalVulnerability ***float***
 
 isHorse ***bool***
 
-itemsButchered ***intArray*** : Item ids of what it should drop upon butchering. 
+butcheredItems  ***intArray*** : Item ids of what it should drop upon butchering. 
 See [this list](https://github.com/ago1024/WurmServerModLauncher/wiki/Item-and-creature-ids) or itemIds.txt for the IDs or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/itemIDs.txt)
 
 keepSex ***bool***
 
-kickDamString ***string***
-
 leaderTemplateId ***int***
 
-maxAge ***int***
+maxAge ***int*** : How old it can get. (Venerable is around 40)
+<br>Example: cret.maxAge = 80
 
-maxGroupAttackSize ***int***
+maxGroupAttackSize ***int*** : How many people can attack it.
+<br>Example: cret.maxGroupAttackSize = 8
 
-maxHuntDist ***int***
+maxHuntDistance ***int*** : How far it chases the player.
+<br>Example: cret.maxHuntDistance = 12
 
 maxPercentOfCreatures ***float***
 
@@ -114,7 +130,9 @@ meatMaterial ***byte*** : The material type for the meat. For the ids see MeatMa
 
 moveRate ***int***
 
-naturalArmour ***float***
+naturalArmour ***float*** : Percentage of damage blocked automatically (0.0-1.0).
+Uniques have 0.04 (4%) or 0.02f (2%)
+<br>Example: cret.naturalArmour = 0.04
 
 offZ ***float*** : ~~The height offset of the creture while on water.~~ It doesn't seem to work idk 
 
@@ -128,15 +146,14 @@ pierceResistance ***float***
 
 pierceVulnerability ***float***
 
-plural ***string***
-
 poisonResistance ***float***
 
 poisonVulnerability ***float***
 
 reputation ***int***
 
-setCombatMoves ***intArray***
+combatMoves ***intArray*** : Can use combat moves.
+<br>Example: cret.combatMoves = 1; 2; 5; 7; 8
 
 sex ***byte***
 
@@ -146,9 +163,11 @@ slashVulnerability ***float***
 
 speed ***float***
 
-types ***intArray*** : a list of the type numbers. See CreatureTypes.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/CreatureTypes.txt)
+types ***intArray*** : A list of the type numbers. See CreatureTypes.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/CreatureTypes.txt)
+Types like aggressive towards human/carnivore/animal/monster/ect
+<br>Example: cret.types = 16; 35; 33
 
-usesNewAttacks ***bool***
+useNewAttacks ***bool***
 
 vision ***short***
 
@@ -156,26 +175,71 @@ waterResistance ***float***
 
 waterVulnerability ***float***
 
-
-
-### Extra properties
-corpseName ***string***
+corpseName ***string*** : the corpse's model name will be "model.corpse.[WHATEVER_YOU_WROTE].", so look for
+those kinds of model strings in mappings.txt
+<br>Example: cret.corpseName = forestgiant
 
 ghost ***bool***
 
 subTerranean ***bool***
 
+handDamage ***float*** : Hand damage
+<br>Example: cret.handDamage = 0.5
+
+kickDamage ***float*** : Kick damage
+<br>Example: cret.kickDamage = 0.5
+
+biteDamage ***float*** : Bite damage
+<br>Example: cret.biteDamage = 0.5
+
+headButtDamage ***float*** : Headbutt damage
+<br>Example: cret.headButtDamage = 0.5
+
+breathDamage ***float*** : Breath damage
+<br>Example: cret.breathDamage = 0.5
+
+handDamString ***string*** : How the hand damage is called in the combat log
+<br>Example: cret.handDamString = rawr xd
+
+biteDamString ***string***
+<br>Example: cret.biteDamString = rawr xd
+
+kickDamString ***string***
+<br>Example: cret.kickDamString = rawr xd
+
+headbuttDamString ***string***
+<br>Example: cret.headbuttDamString = rawr xd
+
+breathDamString ***string***
+<br>Example: cret.breathDamString = rawr xd
+
+deity ***int*** : For ids see Deities.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/Deities.txt)
+I have no idea if setting this does anything. For all vanilla creatures this is set to null.
+<br>Example: cret.deity = 1 
+
+faith ***float***
+
+tutorial ***bool***
+
+noSkillgain ***bool***
+
+royalAspiration ***bool***
+
+noCorpse ***bool***
+
+noServerSounds ***bool***
+
 
 
 ### Complex properties
 
-sizeModifier ***(int, int, int)*** : Modifier to the size of the creature.
+sizeModifier ***(int, int, int)*** : Modifier to the size of the creature's model. X, Y, Z
 (64, 64, 64) is default.
 <br>Example: cret.sizeModifier = 256; 256; 256
 
 onFire ***(bool, byte)*** : onFire, fireRadius
 
-hitSounds ***(string, string)*** : Hit sound male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
+hitSounds ***(string, string)*** : Sound it makes when hit. Male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
 <br>Example: cret.hitSounds = sound.combat.hit.cat; sound.combat.hit.cat
 
 dimension ***(short, short, short)*** : The effective size of the creature
@@ -184,20 +248,14 @@ Height determines how far the creature is visible from
 (401 makes it visible as far as possible). 
 <br>Example: cret.dimension = 40; 500; 100
 
-deathSounds ***(string, string)*** : The death sounds. Male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
+deathSounds ***(string, string)*** : Sound it makes when it dies. Male and female. See sounds.txt or [on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/sounds.txt)
 <br>Example: cret.deathSounds = sound.death.dragon; sound.death.dragon
-
-damages ***(float, float, float, float, float)*** : Hand, kick, bite,
-head, breath damage.
-<br>Example: cret.damages = 17.0; 20.0f; 0.0f; 0.0f; 0.0f
 
 color ***(int, int, int)*** : RGB color
 <br>Example: cret.color = 128; 64; 196
 
 boundsValues ***(float, float, float, float)*** : minX, minY, maxX, maxY
 <br>Example: cret.boundsValues = 1.5; 3; 5.2; 36.6
-
-
 
 ### Complicated properties
 
@@ -208,11 +266,13 @@ addPrimaryAttack ***(string, AttackIdentifier[STRIKE, BITE, MAUL, CLAW, HEADBUTT
 float, float, float, int, int, byte, bool, int, float)*** :
 name, attackIdentifier, baseDamage, criticalChance, baseSpeed, attackReach,
 weightGroup, damageType, usesWeapon, rounds, waitUntilNextAttack
+**Note that adding in one or more primary attack clears out the other ones if you copied a template**
 <br>Example: cret.addPrimaryAttack1 = maul; MAUL; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
 <br>Example: cret.addPrimaryAttack2 = bite rawrxd; BITE; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
 <br>Example: cret.addPrimaryAttack3 = strike; STRIKE; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
 
 addSecondaryAttack ***same as addPrimaryAttack***
+**Note that adding in one or more primary attack clears out the other ones if you copied a template**
 <br>Example: cret.addSecondaryAttack1 = "maul"; MAUL; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
 <br>Example: cret.addSecondaryAttack2 = "bite"; BITE; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
 <br>Example: cret.addSecondaryAttack3 = "strike"; STRIKE; 7.0; 0.04; 6.0; 3; 2; 0; true; 3; 1.4
@@ -226,5 +286,6 @@ skill ***(int, float)*** : Skill id and level. See IDs SkillList.txt or [on gith
 #### Encounters
 
 encounter ***(byte, int, int)*** : tile type, creature count, chance. See tile types in TileTypes.txt [or on github](https://github.com/Tyoda/CustomCreatures/blob/master/include/TileTypes.txt)
-<br>Example: cret.encounter1 = TILE_GRASS; 5; 1
+The encounter1 here means "it can spawn on sand with a group of 2 monsters and has 3% chance per tile poll"
+<br>Example: cret.encounter1 = TILE_SAND; 2; 3
 <br>Example: cret.encounter2 = TILE_TAR; 5; 10

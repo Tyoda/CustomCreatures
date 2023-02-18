@@ -1,188 +1,443 @@
 package org.tyoda.wurm.customcreatures;
 
 import com.wurmonline.mesh.Tiles;
+import com.wurmonline.server.combat.ArmourTemplate;
 import com.wurmonline.server.creatures.*;
-import com.wurmonline.shared.constants.CreatureTypes;
+import com.wurmonline.server.deities.Deities;
+import com.wurmonline.server.skills.Skill;
+import com.wurmonline.server.skills.Skills;
+import com.wurmonline.server.skills.SkillsFactory;
 import org.gotti.wurmunlimited.modloader.ReflectionUtil;
+import org.gotti.wurmunlimited.modloader.classhooks.HookException;
 import org.gotti.wurmunlimited.modsupport.CreatureTemplateBuilder;
 import org.gotti.wurmunlimited.modsupport.creatures.EncounterBuilder;
 import org.gotti.wurmunlimited.modsupport.creatures.ModCreature;
 import org.gotti.wurmunlimited.modsupport.creatures.TraitsSetter;
 import org.gotti.wurmunlimited.modsupport.vehicles.ModVehicleBehaviour;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CustomCreature implements ModCreature {
     private static final Logger logger = CustomCreatures.logger;
     private final Properties p;
+    private final String prePrefix = "mod.tyoda.customcreatures.";
     private final String prefix;
     private int templateId = -10;
     public CustomCreature(Properties properties, String prefix){
         this.p = properties;
-        this.prefix = prefix;
+        if(prefix.endsWith(".")){
+            this.prefix = prefix;
+        }else{
+            this.prefix = prefix + ".";
+        }
     }
 
     @Override
     public CreatureTemplateBuilder createCreateTemplateBuilder() {
-        logger.info("Creating creature template builder for: "+prefix);
+        return new CreatureTemplateBuilder(prePrefix+prefix) {
+            @Override
+            public CreatureTemplate build() {
 
-        int[] types = {
-                CreatureTypes.C_TYPE_CARNIVORE,
-                CreatureTypes.C_TYPE_MOVE_GLOBAL,
-                CreatureTypes.C_TYPE_VEHICLE,
-                CreatureTypes.C_TYPE_REGENERATING,
-                CreatureTypes.C_TYPE_AGG_HUMAN,
-                CreatureTypes.C_TYPE_SWIMMING,
-                CreatureTypes.C_TYPE_HUNTING,
-                CreatureTypes.C_TYPE_DOMINATABLE,
-                CreatureTypes.C_TYPE_MONSTER,
-                CreatureTypes.C_TYPE_NON_NEWBIE,
-                CreatureTypes.C_TYPE_ANIMAL,
-                CreatureTypes.C_TYPE_MISSION_OK,
-                CreatureTypes.C_TYPE_MISSION_TRAITOR_OK
+                CreatureTemplate temp = new CreatureTemplateBuilder(prePrefix+prefix, getStringProperty("name"), "A creature.", "model.creature.humanoid.rooster.brown", new int[0], (byte) 3, (short) 5, (byte) 0, (short) 60, (short) 30, (short) 90, "sound.death.lion",
+                        "sound.death.lion", "sound.combat.hit.lion", "sound.combat.hit.lion", 0.95f, 3.0f, 0.0f, 5.0f, 0.0f, 0.0f, 1.0f, 1200, new int[] { 92, 305, 313 }, 10, 40, (byte) 75).build();
+                templateId = temp.getTemplateId();
+                return buildOnTemplate(temp);
+            }
         };
-        CreatureTemplateBuilder builder = new CreatureTemplateBuilder("mod.tyoda.customcreatures."+prefix, getStringProperty("name"), "A creature.", "model.creature.humanoid.rooster.brown", types, (byte) 3, (short) 5, (byte) 0, (short) 60, (short) 30, (short) 90, "sound.death.lion",
-                "sound.death.lion", "sound.combat.hit.lion", "sound.combat.hit.lion", 0.95f, 3.0f, 0.0f, 5.0f, 0.0f, 0.0f, 1.0f, 1200, new int[] { 92, 305, 313 }, 10, 40, (byte) 75);
+    }
 
-        templateId = builder.getTemplateId();
-        builder.defaultSkills();
+    private CreatureTemplate buildOnTemplate(CreatureTemplate temp){
+        logger.info("Creating creature template for: "+prefix);
+        ArrayList<String> properties = new ArrayList<>();
 
-        // basic stuff
-        try{ builder.modelName(getStringProperty("modelName")); logger.info("Added modelName"); } catch (MissingPropertyException ignored){}
-        try{ builder.acidVulnerability(getFloatProperty("acidVulnerability")); logger.info("Added acidVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.acidResistance(getFloatProperty("acidResistance")); logger.info("Added acidResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.aggressive(getIntProperty("aggressive")); logger.info("Added aggressive"); } catch (MissingPropertyException ignored){}
-        try{ builder.alignment(getFloatProperty("alignment")); logger.info("Added alignment"); } catch (MissingPropertyException ignored){}
-        try{ builder.armourType(getIntProperty("armourType")); logger.info("Added armourType"); } catch (MissingPropertyException ignored){}
-        try{ builder.baseCombatRating(getFloatProperty("baseCombatRating")); logger.info("Added baseCombatRating"); } catch (MissingPropertyException ignored){}
-        try{ builder.biteResistance(getFloatProperty("biteResistance")); logger.info("Added biteResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.biteVulnerability(getFloatProperty("biteVulnerability")); logger.info("Added biteVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.bodyType(getByteProperty("bodyType")); logger.info("Added bodyType"); } catch (MissingPropertyException ignored){}
-        try{ builder.bonusCombatRating(getIntProperty("bonusCombatRating")); logger.info("Added bonusCombatRating"); } catch (MissingPropertyException ignored){}
-        try{ builder.childTemplate(getIntProperty("childTemplate")); logger.info("Added childTemplate"); } catch (MissingPropertyException ignored){}
-        try{ builder.coldResistance(getFloatProperty("coldResistance")); logger.info("Added coldResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.coldVulnerability(getFloatProperty("coldVulnerability")); logger.info("Added coldVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.combatDamageType(getByteProperty("combatDamageType")); logger.info("Added combatDamageType"); } catch (MissingPropertyException ignored){}
-        try{ builder.crushResistance(getFloatProperty("crushResistance")); logger.info("Added crushResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.crushVulnerability(getFloatProperty("crushVulnerability")); logger.info("Added crushVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.daysOfPregnancy(getByteProperty("daysOfPregnancy")); logger.info("Added daysOfPregnancy"); } catch (MissingPropertyException ignored){}
-        try{ builder.denMaterial(getByteProperty("denMaterial")); logger.info("Added denMaterial"); } catch (MissingPropertyException ignored){}
-        try{ builder.denName(getStringProperty("denName")); logger.info("Added denName"); } catch (MissingPropertyException ignored){}
-        try{ builder.description(getStringProperty("description")); logger.info("Added description"); } catch (MissingPropertyException ignored){}
-        try{ builder.diseaseResistance(getFloatProperty("diseaseResistance")); logger.info("Added diseaseResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.diseaseVulnerability(getFloatProperty("diseaseVulnerability")); logger.info("Added diseaseVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.eggLayer(getIntProperty("eggLayer")); logger.info("Added eggLayer"); } catch (MissingPropertyException ignored){}
-        try{ builder.fireResistance(getFloatProperty("fireResistance")); logger.info("Added fireResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.fireVulnerability(getFloatProperty("fireVulnerability")); logger.info("Added fireVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.glowing(getBooleanProperty("glowing")); logger.info("Added glowing"); } catch (MissingPropertyException ignored){}
-        try{ builder.handDamString(getStringProperty("handDamString")); logger.info("Added handDamString"); } catch (MissingPropertyException ignored){}
-        try{ builder.hasHands(getBooleanProperty("hasHands")); logger.info("Added hasHands"); } catch (MissingPropertyException ignored){}
-        try{ builder.headbuttDamString(getStringProperty("headbuttDamString")); logger.info("Added headbuttDamString"); } catch (MissingPropertyException ignored){}
-        try{ builder.internalResistance(getFloatProperty("internalResistance")); logger.info("Added internalResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.internalVulnerability(getFloatProperty("internalVulnerability")); logger.info("Added internalVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.isHorse(getBooleanProperty("isHorse")); logger.info("Added isHorse"); } catch (MissingPropertyException ignored){}
-        try{ builder.itemsButchered(getIntArrayProperty("itemsButchered")); logger.info("Added itemsButchered"); } catch (MissingPropertyException ignored){}
-        try{ builder.keepSex(getBooleanProperty("keepSex")); logger.info("Added keepSex"); } catch (MissingPropertyException ignored){}
-        try{ builder.kickDamString(getStringProperty("kickDamString")); logger.info("Added kickDamString"); } catch (MissingPropertyException ignored){}
-        try{ builder.leaderTemplateId(getIntProperty("leaderTemplateId")); logger.info("Added leaderTemplateId"); } catch (MissingPropertyException ignored){}
-        try{ builder.maxAge(getIntProperty("maxAge")); logger.info("Added maxAge"); } catch (MissingPropertyException ignored){}
-        try{ builder.maxGroupAttackSize(getIntProperty("maxGroupAttackSize")); logger.info("Added maxGroupAttackSize"); } catch (MissingPropertyException ignored){}
-        try{ builder.maxHuntDist(getIntProperty("maxHuntDist")); logger.info("Added maxHuntDist"); } catch (MissingPropertyException ignored){}
-        try{ builder.maxPercentOfCreatures(getFloatProperty("maxPercentOfCreatures")); logger.info("Added maxPercentOfCreatures"); } catch (MissingPropertyException ignored){}
-        try{ builder.maxPopulationOfCreatures(getIntProperty("maxPopulationOfCreatures")); logger.info("Added maxPopulationOfCreatures"); } catch (MissingPropertyException ignored){}
-        try{ builder.meatMaterial(getByteProperty("meatMaterial")); logger.info("Added meatMaterial"); } catch (MissingPropertyException ignored){}
-        try{ builder.moveRate(getIntProperty("moveRate")); logger.info("Added moveRate"); } catch (MissingPropertyException ignored){}
-        try{ builder.naturalArmour(getFloatProperty("naturalArmour")); logger.info("Added naturalArmour"); } catch (MissingPropertyException ignored){}
-        try{ builder.offZ(getFloatProperty("offZ")); logger.info("Added offZ"); } catch (MissingPropertyException ignored){}
-        try{ builder.paintMode(getIntProperty("paintMode")); logger.info("Added paintMode"); } catch (MissingPropertyException ignored){}
-        try{ builder.physicalResistance(getFloatProperty("physicalResistance")); logger.info("Added physicalResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.physicalVulnerability(getFloatProperty("physicalVulnerability")); logger.info("Added physicalVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.pierceResistance(getFloatProperty("pierceResistance")); logger.info("Added pierceResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.pierceVulnerability(getFloatProperty("pierceVulnerability")); logger.info("Added pierceVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.plural(getStringProperty("plural")); logger.info("Added plural"); } catch (MissingPropertyException ignored){}
-        try{ builder.poisonResistance(getFloatProperty("poisonResistance")); logger.info("Added poisonResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.poisonVulnerability(getFloatProperty("poisonVulnerability")); logger.info("Added poisonVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.reputation(getIntProperty("reputation")); logger.info("Added reputation"); } catch (MissingPropertyException ignored){}
-        try{ builder.setCombatMoves(getIntArrayProperty("setCombatMoves")); logger.info("Added setCombatMoves"); } catch (MissingPropertyException ignored){}
-        try{ builder.sex(getByteProperty("sex")); logger.info("Added sex"); } catch (MissingPropertyException ignored){}
-        try{ builder.slashResistance(getFloatProperty("slashResistance")); logger.info("Added slashResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.slashVulnerability(getFloatProperty("slashVulnerability")); logger.info("Added slashVulnerability"); } catch (MissingPropertyException ignored){}
-        try{ builder.speed(getFloatProperty("speed")); logger.info("Added speed"); } catch (MissingPropertyException ignored){}
-        try{ builder.types(getIntArrayProperty("types")); logger.info("Added types"); } catch (MissingPropertyException ignored){}
-        try{ builder.usesNewAttacks(getBooleanProperty("usesNewAttacks")); logger.info("Added usesNewAttacks"); } catch (MissingPropertyException ignored){}
-        try{ builder.vision(getShortProperty("vision")); logger.info("Added vision"); } catch (MissingPropertyException ignored){}
-        try{ builder.waterResistance(getFloatProperty("waterResistance")); logger.info("Added waterResistance"); } catch (MissingPropertyException ignored){}
-        try{ builder.waterVulnerability(getFloatProperty("waterVulnerability")); logger.info("Added waterVulnerability"); } catch (MissingPropertyException ignored){}
+        for(String property : p.stringPropertyNames()){
+            if(property.startsWith(prefix)){
+                properties.add(property.substring(prefix.length()));
+            }
+        }
 
-        try{
-            int[] values = getIntArrayProperty("sizeModifier", 3);
-            builder.sizeModifier(values[0], values[1], values[2]);
-            logger.info("Added sizeModifier");
-        } catch (MissingPropertyException ignored){}
-        try{
-            String[] values = getStringArrayProperty("onFire", 2);
-            builder.onFire(Boolean.parseBoolean(values[0]), Byte.parseByte(values[1]));
-            logger.info("Added onFire");
-        } catch (MissingPropertyException ignored){}
-        try{
-            String[] values = getStringArrayProperty("hitSounds", 2);
-            builder.hitSounds(values[0], values[1]);
-            logger.info("Added hitSounds");
-        } catch (MissingPropertyException ignored){}
-        try{
-            String[] values = getStringArrayProperty("dimension", 3);
-            builder.dimension(Short.parseShort(values[0]), Short.parseShort(values[1]), Short.parseShort(values[2]));
-            logger.info("Added dimension");
-        } catch (MissingPropertyException ignored){}
-        try{
-            String[] values = getStringArrayProperty("deathSounds", 2);
-            builder.deathSounds(values[0], values[1]);
-            logger.info("Added deathSounds");
-        } catch (MissingPropertyException ignored){}
-        try{
-            float[] values = getFloatArrayProperty("damages", 5);
-            builder.damages(values[0], values[1], values[2], values[3], values[4]);
-            logger.info("Added damages");
-        } catch (MissingPropertyException ignored){}
-        try{
-            int[] values = getIntArrayProperty("color", 3);
-            builder.color(values[0], values[1], values[2]);
-            logger.info("Added color");
-        } catch (MissingPropertyException ignored){}
-        try{
-            float[] values = getFloatArrayProperty("boundsValues", 4);
-            builder.boundsValues(values[0], values[1], values[2], values[3]);
-            logger.info("Added boundsValues");
-        } catch (MissingPropertyException ignored){}
+        for(String property : properties){
+            switch(property){
+                case "name":
+                    setPrivateField(temp, "name", getStringProperty("name"));
+                    break;
+                case "plural":
+                    setPrivateField(temp, "plural", getStringProperty("plural"));
+                    break;
+                case "bodyType":
+                    setPrivateField(temp, "bodyType", getByteProperty("bodyType"));
+                    break;
+                case "sex":
+                    setPrivateField(temp, "sex", getByteProperty("sex"));
+                    break;
+                case "vision":
+                    temp.setVision(getShortProperty("vision"));
+                    break;
+                case "description":
+                    setPrivateField(temp, "longDesc", getStringProperty("description"));
+                    break;
+                case "modelName":
+                    setPrivateField(temp, "modelName", getStringProperty("modelName"));
+                    break;
+                case "corpseName":
+                    String corpseName = getStringProperty("corpseName");
+                    if(!corpseName.endsWith(".")){
+                        corpseName += '.';
+                    }
+                    temp.setCorpseName(corpseName);
+                    break;
+                case "ghost":
+                    setPrivateField(temp, "ghost", getBooleanProperty("ghost"));
+                    break;
+                case "subterranean":
+                    temp.setSubterranean(getBooleanProperty("subTerranean"));
+                    break;
+                case "handDamage":
+                    setPrivateField(temp, "handDamage",  getFloatProperty("handDamage"));
+                    break;
+                case "kickDamage":
+                    setPrivateField(temp, "kickDamage", getFloatProperty("kickDamage"));
+                    break;
+                case "biteDamage":
+                    setPrivateField(temp, "biteDamage", getFloatProperty("biteDamage"));
+                    break;
+                case "headButtDamage":
+                    setPrivateField(temp, "headButtDamage", getFloatProperty("headButtDamage"));
+                    break;
+                case "breathDamage":
+                    setPrivateField(temp, "breathDamage", getFloatProperty("breathDamage"));
+                    break;
+                case "reputation":
+                    setPrivateField(temp, "reputation", getIntProperty("reputation"));
+                    break;
+                case "meatMaterial":
+                    setPrivateField(temp, "meatMaterial", getByteProperty("meatMaterial"));
+                    break;
+                case "denName":
+                    temp.setDenName(getStringProperty("denName"));
+                    break;
+                case "denMaterial":
+                    temp.setDenMaterial(getByteProperty("denMaterial"));
+                    break;
+                case "handDamString":
+                    temp.setHandDamString(getStringProperty("handDamString"));
+                    break;
+                case "biteDamString":
+                    temp.setBiteDamString(getStringProperty("biteDamString"));
+                    break;
+                case "kickDamString":
+                    temp.setKickDamString(getStringProperty("kickDamString"));
+                    break;
+                case "headbuttDamString":
+                    temp.setHeadbuttDamString(getStringProperty("headbuttDamString"));
+                    break;
+                case "breathDamString":
+                    temp.setBreathDamString(getStringProperty("breathDamString"));
+                    break;
+                case "aggressivity":
+                    setPrivateField(temp, "aggressivity", getIntProperty("aggressivity"));
+                    break;
+                case "alignment":
+                    temp.setAlignment(getFloatProperty("alignment"));
+                    break;
+                case "deity":
+                    setPrivateField(temp, "deity", Deities.getDeity(getIntProperty("deity")));
+                    break;
+                case "faith":
+                    setPrivateField(temp, "faith", getFloatProperty("faith"));
+                    break;
+                case "naturalArmour":
+                    setPrivateField(temp, "naturalArmour", getFloatProperty("naturalArmour"));
+                    break;
+                case "armourType":
+                    temp.setArmourType(intToArmourType(getIntProperty("armourType")));
+                    break;
+                case "eggLayer":
+                    temp.setEggLayer(getBooleanProperty("eggLayer"));
+                    break;
+                case "eggTemplateId":
+                    temp.setEggTemplateId(getIntProperty("eggTemplateId"));
+                    break;
+                case "childTemplateId":
+                    temp.setChildTemplateId(getIntProperty("childTemplateId"));
+                    break;
+                case "combatMoves":
+                    temp.setCombatMoves(getIntArrayProperty("combatMoves"));
+                    break;
+                case "noSkillgain":
+                    temp.setNoSkillgain(getBooleanProperty("noSkillgain"));
+                    break;
+                case "royalAspiration":
+                    setPrivateField(temp, "royalAspiration", getBooleanProperty("royalAspiration"));
+                    break;
+                case "offZ":
+                    setPrivateField(temp, "offZ", getFloatProperty("offZ"));
+                    break;
+                /*case "colourNameOverrides":
+                    break;*/ // TODO
+                case "keepSex":
+                    temp.setKeepSex(getBooleanProperty("keepSex"));
+                    break;
+                case "tutorial":
+                    temp.setTutorial(getBooleanProperty("tutorial"));
+                    break;
+                case "glowing":
+                    temp.setGlowing(getBooleanProperty("glowing"));
+                    break;
+                case "hasHands":
+                    setPrivateField(temp, "hasHands", getBooleanProperty("hasHands"));
+                    break;
+                case "noCorpse":
+                    setPrivateField(temp, "noCorpse", getBooleanProperty("noCorpse"));
+                    break;
+                case "maxPopulationOfCreatures":
+                    temp.setMaxPopulationOfCreatures(getIntProperty("maxPopulationOfCreatures"));
+                    setPrivateField(temp, "usesMaxPopulation", true);
+                    break;
+                case "useNewAttacks":
+                    temp.setUsesNewAttacks(getBooleanProperty("useNewAttacks"));
+                    break;
+                case "noServerSounds":
+                    temp.setNoServerSounds(getBooleanProperty("noServerSounds"));
+                    break;
+                case "speed":
+                    setPrivateField(temp, "speed", getFloatProperty("speed"));
+                    break;
+                case "baseCombatRating":
+                    temp.setBaseCombatRating(getFloatProperty("baseCombatRating"));
+                    break;
+                case "bonusCombatRating":
+                    temp.setBonusCombatRating(getFloatProperty("bonusCombatRating"));
+                    break;
+                case "fireResistance":
+                    temp.fireResistance = getFloatProperty("fireResistance");
+                    break;
+                case "coldResistance":
+                    temp.coldResistance = getFloatProperty("coldResistance");
+                    break;
+                case "diseaseResistance":
+                    temp.diseaseResistance = getFloatProperty("diseaseResistance");
+                    break;
+                case "physicalResistance":
+                    temp.physicalResistance = getFloatProperty("physicalResistance");
+                    break;
+                case "pierceResistance":
+                    temp.pierceResistance = getFloatProperty("pierceResistance");
+                    break;
+                case "slashResistance":
+                    temp.slashResistance = getFloatProperty("slashResistance");
+                    break;
+                case "crushResistance":
+                    temp.crushResistance = getFloatProperty("crushResistance");
+                    break;
+                case "biteResistance":
+                    temp.biteResistance = getFloatProperty("biteResistance");
+                    break;
+                case "poisonResistance":
+                    temp.poisonResistance = getFloatProperty("poisonResistance");
+                    break;
+                case "waterResistance":
+                    temp.waterResistance = getFloatProperty("waterResistance");
+                    break;
+                case "acidResistance":
+                    temp.acidResistance = getFloatProperty("acidResistance");
+                    break;
+                case "internalResistance":
+                    temp.internalResistance = getFloatProperty("internalResistance");
+                    break;
+                case "fireVulnerability":
+                    temp.fireVulnerability = getFloatProperty("fireVulnerability");
+                    break;
+                case "coldVulnerability":
+                    temp.coldVulnerability = getFloatProperty("coldVulnerability");
+                    break;
+                case "diseaseVulnerability":
+                    temp.diseaseVulnerability = getFloatProperty("diseaseVulnerability");
+                    break;
+                case "physicalVulnerability":
+                    temp.physicalVulnerability = getFloatProperty("physicalVulnerability");
+                    break;
+                case "pierceVulnerability":
+                    temp.pierceVulnerability = getFloatProperty("pierceVulnerability");
+                    break;
+                case "slashVulnerability":
+                    temp.slashVulnerability = getFloatProperty("slashVulnerability");
+                    break;
+                case "crushVulnerability":
+                    temp.crushVulnerability = getFloatProperty("crushVulnerability");
+                    break;
+                case "biteVulnerability":
+                    temp.biteVulnerability = getFloatProperty("biteVulnerability");
+                    break;
+                case "poisonVulnerability":
+                    temp.poisonVulnerability = getFloatProperty("poisonVulnerability");
+                    break;
+                case "waterVulnerability":
+                    temp.waterVulnerability = getFloatProperty("waterVulnerability");
+                    break;
+                case "acidVulnerability":
+                    temp.acidVulnerability = getFloatProperty("acidVulnerability");
+                    break;
+                case "internalVulnerability":
+                    temp.internalVulnerability = getFloatProperty("internalVulnerability");
+                    break;
+                case "maxPercentOfCreatures":
+                    temp.setMaxPercentOfCreatures(getFloatProperty("maxPercentOfCreatures"));
+                    break;
+                case "mateTemplateId":
+                    temp.setMateTemplateId(getIntProperty("mateTemplateId"));
+                    break;
+                case "moveRate":
+                    setPrivateField(temp, "moveRate", getIntProperty("moveRate"));
+                    break;
+                case "butcheredItems":
+                    setPrivateField(temp, "butcheredItems", getIntArrayProperty("butcheredItems"));
+                    break;
+                case "maxHuntDistance":
+                    setPrivateField(temp, "maxHuntDistance", getIntProperty("maxHuntDistance"));
+                    break;
+                case "leaderTemplateId":
+                    temp.setLeaderTemplateId(getIntProperty("leaderTemplateId"));
+                    break;
+                case "adultFemaleTemplateId":
+                    temp.setAdultFemaleTemplateId(getIntProperty("adultFemaleTemplateId"));
+                    break;
+                case "adultMaleTemplateId":
+                    temp.setAdultMaleTemplateId(getIntProperty("adultMaleTemplateId"));
+                    break;
+                case "maxGroupAttackSize":
+                    temp.setMaxGroupAttackSize(getIntProperty("maxGroupAttackSize"));
+                    break;
+                case "maxAge":
+                    temp.setMaxAge(getIntProperty("maxAge"));
+                    break;
+                /*case "maxColourCount":
+                    temp.maxColourCount = getIntProperty("maxColourCount");
+                    break;*/
+                case "paintMode":
+                    temp.setPaintMode(getIntProperty("paintMode"));
+                    break;
+                case "combatDamageType":
+                    temp.setCombatDamageType(getByteProperty("combatDamageType"));
+                    break;
+                case "daysOfPregnancy":
+                    temp.setDaysOfPregnancy(getByteProperty("daysOfPregnancy"));
+                    break;
+                /*case "lootTable":
+                    break;*/ // TODO
+                case "color":
+                    int[] color = getIntArrayProperty("color", 3);
+                    temp.setColorRed(color[0]);
+                    temp.setColorGreen(color[1]);
+                    temp.setColorBlue(color[2]);
+                    setPrivateField(temp, "isColoured", true);
+                    break;
+                case "boundsValues":
+                    float[] boundsValues = getFloatArrayProperty("boundsValues", 4);
+                    temp.setBoundsValues(boundsValues[0], boundsValues[1], boundsValues[2], boundsValues[3]);
+                    break;
+                case "sizeModifier":
+                    int[] sizeModifiers = getIntArrayProperty("sizeModifier", 3);
+                    temp.setSizeModX(sizeModifiers[0]);
+                    temp.setSizeModY(sizeModifiers[1]);
+                    temp.setSizeModZ(sizeModifiers[2]);
+                    break;
+                case "onFire":
+                    String[] onFire = getStringArrayProperty("onFire", 2);
+                    temp.setOnFire(Boolean.parseBoolean(onFire[0]));
+                    temp.setFireRadius(Byte.parseByte(onFire[1]));
+                    break;
+                case "dimension":
+                    String[] values = getStringArrayProperty("dimension", 3);
+                    setPrivateField(temp, "centimetersHigh", Short.parseShort(values[0]));
+                    setPrivateField(temp, "centimetersLong", Short.parseShort(values[1]));
+                    setPrivateField(temp, "centimetersWide", Short.parseShort(values[2]));
+                    break;
+                case "hitSounds":
+                    String[] hitSounds = getStringArrayProperty("hitSounds", 2);
+                    setPrivateField(temp, "hitSoundMale",   hitSounds[0]);
+                    setPrivateField(temp, "hitSoundFemale", hitSounds[1]);
+                    break;
+                case "deathSounds":
+                    String[] deathSounds = getStringArrayProperty("deathSounds", 2);
+                    setPrivateField(temp, "deathSoundMale",   deathSounds[0]);
+                    setPrivateField(temp, "deathSoundFemale", deathSounds[1]);
+                    break;
+                case "types":
+                    try {
+                        ReflectionUtil.callPrivateMethod(temp, ReflectionUtil.getMethod(temp.getClass(), "assignTypes"), (Object) getIntArrayProperty("types"));
+                    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e){
+                        throw new HookException(e);
+                    }
+                    break;
+                case "copy":
+                case "override":
+                    break;
+                default:
+                    if(!property.startsWith("skill")
+                            && !property.startsWith("addSecondaryAttack")
+                            && !property.startsWith("addPrimaryAttack")
+                            && !property.startsWith("encounter"))
+                        throw new HookException("No such property \""+property+"\" in "+prefix);
+            }
+            logger.info("Added "+property);
+        }
+
+        List<AttackAction> primaryAttacks = new ArrayList<>(temp.getPrimaryAttacks());
+        List<AttackAction> secondaryAttacks = new ArrayList<>(temp.getSecondaryAttacks());
+        setPrivateField(temp, "primaryAttacks", primaryAttacks);
+        setPrivateField(temp, "secondaryAttacks", secondaryAttacks);
         try{
             for(int i = 1;;++i) {
                 String[] values = getStringArrayProperty("addPrimaryAttack"+i, 11);
-                builder.addPrimaryAttack(createAttackAction(values));
+                if(i == 1) temp.getPrimaryAttacks().clear();
+                temp.addPrimaryAttack(createAttackAction(values));
                 logger.info("Added addPrimaryAttack"+i);
             }
         } catch (MissingPropertyException ignored){}
         try{
             for(int i = 1;;++i) {
                 String[] values = getStringArrayProperty("addSecondaryAttack"+i, 11);
-                builder.addSecondaryAttack(createAttackAction(values));
+                if(i == 1) temp.getSecondaryAttacks().clear();
+                temp.addSecondaryAttack(createAttackAction(values));
                 logger.info("Added addSecondaryAttack"+i);
             }
         } catch (MissingPropertyException ignored){}
+
+        Skills skills = SkillsFactory.createSkills(temp.getName());
+        skills.learnTemp(100, 20.0F);
+        skills.learnTemp(101, 20.0F);
+        skills.learnTemp(102, 20.0F);
+        skills.learnTemp(104, 20.0F);
+        skills.learnTemp(103, 20.0F);
+        skills.learnTemp(105, 20.0F);
+        skills.learnTemp(106, 20.0F);
+        try{
+            for(Skill skill : temp.getSkills().getSkills()) {
+                skills.learnTemp(skill.getNumber(), (float)skill.getKnowledge());
+            }
+        } catch (Exception ignored){}
         try{
             for(int i = 1;;++i) {
                 String[] values = getStringArrayProperty("skill"+i, 2);
-                builder.skill(Integer.parseInt(values[0]), Float.parseFloat(values[1]));
+                skills.learnTemp(Integer.parseInt(values[0]), Float.parseFloat(values[1]));
                 logger.info("Added skill"+i);
             }
         } catch (MissingPropertyException ignored){}
 
+        return temp;
+    }
 
-        // extras
-
-
-        return builder;
+    private void setPrivateField(CreatureTemplate temp, String fieldname, Object value){
+        try {
+            ReflectionUtil.setPrivateField(temp, ReflectionUtil.getField(CreatureTemplate.class, fieldname), value);
+        }catch (NoSuchFieldException | IllegalAccessException e){
+            throw new HookException(e);
+        }
     }
 
     private AttackAction createAttackAction(String[] values){
@@ -202,21 +457,21 @@ public class CustomCreature implements ModCreature {
         return new AttackAction(name, attackIdentifier, attackValues);
     }
 
-    private String getStringProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private String getStringProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return value.trim();
     }
 
-    private String[] getStringArrayProperty(String propName){
+    private String[] getStringArrayProperty(String propName) throws MissingPropertyException {
         return getStringArrayProperty(propName, -1);
     }
 
-    private String[] getStringArrayProperty(String propName, int length){
-        String value = p.getProperty(prefix+'.'+propName);
+    private String[] getStringArrayProperty(String propName, int length) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         String[] items = value.split(CustomCreatures.delimiter);
         if(length > -1 && items.length != length) throw new RuntimeException("Property "+propName+" must have exactly "+length+" items");
         for(int i = 0; i < items.length; ++i){
@@ -225,14 +480,14 @@ public class CustomCreature implements ModCreature {
         return items;
     }
 
-    private int[] getIntArrayProperty(String propName){
+    private int[] getIntArrayProperty(String propName) throws MissingPropertyException {
         return getIntArrayProperty(propName, -1);
     }
 
-    private int[] getIntArrayProperty(String propName, int length){
-        String value = p.getProperty(prefix+'.'+propName);
+    private int[] getIntArrayProperty(String propName, int length) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         String[] items = value.split(CustomCreatures.delimiter);
         if(length > -1 && items.length != length) throw new RuntimeException("Property "+propName+" must have exactly "+length+" items");
         int[] toReturn = new int[items.length];
@@ -242,14 +497,14 @@ public class CustomCreature implements ModCreature {
         return toReturn;
     }
 
-    private float[] getFloatArrayProperty(String propName){
+    private float[] getFloatArrayProperty(String propName) throws MissingPropertyException {
         return getFloatArrayProperty(propName, -1);
     }
 
-    private float[] getFloatArrayProperty(String propName, int length){
-        String value = p.getProperty(prefix+'.'+propName);
+    private float[] getFloatArrayProperty(String propName, int length) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         String[] items = value.split(CustomCreatures.delimiter);
         if(length > -1 && items.length != length) throw new RuntimeException("Property "+propName+" must have exactly "+length+" items");
         float[] toReturn = new float[items.length];
@@ -259,56 +514,70 @@ public class CustomCreature implements ModCreature {
         return toReturn;
     }
 
-    private int getIntProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private int getIntProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return Integer.parseInt(value.trim());
     }
 
-    private float getFloatProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private float getFloatProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return Float.parseFloat(value.trim());
     }
 
-    private byte getByteProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private byte getByteProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return Byte.parseByte(value.trim());
     }
 
-    private short getShortProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private short getShortProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return Short.parseShort(value.trim());
     }
 
-    private boolean getBooleanProperty(String propName){
-        String value = p.getProperty(prefix+'.'+propName);
+    private boolean getBooleanProperty(String propName) throws MissingPropertyException {
+        String value = p.getProperty(prefix+propName);
         if(value == null)
-            throw new MissingPropertyException("Property "+propName+" not found for "+prefix);
+            throw new MissingPropertyException("Property \""+propName+"\" not found for "+prefix);
         return Boolean.parseBoolean(value.trim());
+    }
+
+    public static ArmourTemplate.ArmourType intToArmourType(int armourType){
+        switch (armourType) {
+            case 1:
+                return ArmourTemplate.ARMOUR_TYPE_LEATHER;
+            case 2:
+                return ArmourTemplate.ARMOUR_TYPE_STUDDED;
+            case 3:
+                return ArmourTemplate.ARMOUR_TYPE_CHAIN;
+            case 4:
+                return ArmourTemplate.ARMOUR_TYPE_PLATE;
+            case 5:
+                return ArmourTemplate.ARMOUR_TYPE_RING;
+            case 6:
+                return ArmourTemplate.ARMOUR_TYPE_CLOTH;
+            case 7:
+                return ArmourTemplate.ARMOUR_TYPE_SCALE;
+            case 8:
+                return ArmourTemplate.ARMOUR_TYPE_SPLINT;
+            case 9:
+                return ArmourTemplate.ARMOUR_TYPE_LEATHER_DRAGON;
+            case 10:
+                return ArmourTemplate.ARMOUR_TYPE_SCALE_DRAGON;
+            default:
+                throw new HookException("Wrong armour type: "+armourType);
+        }
     }
 
     @Override
     public ModVehicleBehaviour getVehicleBehaviour() {
-        // This is called right after the template is built, so we're going to put some inappropriate stuff here. Sue me.
-        try{
-            CreatureTemplate template = CreatureTemplateFactory.getInstance().getTemplate(templateId);
-            try{ ReflectionUtil.setPrivateField(template, ReflectionUtil.getField(CreatureTemplate.class, "corpsename"), getStringProperty("corpseName")); logger.info("Added corpseName"); } catch (MissingPropertyException ignored){}
-            try{ ReflectionUtil.setPrivateField(template, ReflectionUtil.getField(CreatureTemplate.class, "ghost"), getBooleanProperty("ghost")); logger.info("Added ghost"); } catch (MissingPropertyException ignored){}
-            try{ template.setSubterranean(getBooleanProperty("subTerranean")); logger.info("Added subTerranean"); } catch (MissingPropertyException ignored){}
-        } catch (NoSuchCreatureTemplateException e){
-            logger.log(Level.SEVERE, "Creature template not found for custom creature "+prefix);
-        } catch (NoSuchFieldException | IllegalAccessException e){
-            logger.log(Level.SEVERE, "ReflectionUtil failed.", e);
-        }
-
-        // And now the actual stuff this method should do:
         return null;
     }
 
