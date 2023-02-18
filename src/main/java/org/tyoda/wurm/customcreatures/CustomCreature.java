@@ -376,7 +376,7 @@ public class CustomCreature implements ModCreature {
                     break;
                 case "copy":
                 case "override":
-                    break;
+                    continue;
                 default:
                     if(!property.startsWith("skill")
                             && !property.startsWith("addSecondaryAttack")
@@ -428,6 +428,7 @@ public class CustomCreature implements ModCreature {
                 logger.info("Added skill"+i);
             }
         } catch (MissingPropertyException ignored){}
+        setPrivateField(temp, "skills", skills);
 
         return temp;
     }
