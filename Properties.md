@@ -262,6 +262,7 @@ boundsValues ***(float, float, float, float)*** : minX, minY, maxX, maxY
 ***You can define several instances for these properties.
 The first one must end with `1`, the second with `2` and so on.*** 
 
+**NOTE THAT ADDPRIMARYATTACK AND ADDSECONDARYATTACK BOTH SEEM TO DO NOTHING IN WU AT THE MOMENT**
 addPrimaryAttack ***(string, AttackIdentifier[STRIKE, BITE, MAUL, CLAW, HEADBUTT, KICK]
 float, float, float, int, int, byte, bool, int, float)*** :
 name, attackIdentifier, baseDamage, criticalChance, baseSpeed, attackReach,

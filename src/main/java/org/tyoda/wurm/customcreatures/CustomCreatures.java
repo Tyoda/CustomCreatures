@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class CustomCreatures implements WurmServerMod, Versioned, Configurable, Initable, PreInitable {
     public static final Logger logger = Logger.getLogger(CustomCreatures.class.getName());
-    public static final String version = "0.2.1";
+    public static final String version = "0.2.2";
 
     public static final String delimiter = ";";
 
@@ -56,4 +56,7 @@ public class CustomCreatures implements WurmServerMod, Versioned, Configurable, 
     public String getVersion(){
         return version;
     }
+
+    // TODO: Friya's loottable
+    // TODO: color on non-normal mobs
 }
